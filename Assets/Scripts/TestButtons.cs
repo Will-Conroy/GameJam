@@ -5,18 +5,24 @@ using UnityEngine;
 public class TestButtons : MonoBehaviour
 {
     private GameController _gameController;
-    private List<GameObject> _targets;
+    private List<GameObject> _targetsPuppets;
 
     public void Awake(){
         _gameController = GameObject.Find("HUB").GetComponent<GameController>();
-        _targets = new List<GameObject> {GameObject.Find("fightGuy"), GameObject.Find("fightGuy (1)")};
+        _targetsPuppets = new List<GameObject> {GameObject.Find("fightGuy"), GameObject.Find("fightGuy (1)")};
         
 
     }
     public void testWeekness(){
-        Command command = new ApplyWeaknessCommand(_targets, Card.ColourTypes.Red, 9);
+        Command command = new ApplyWeaknessCommand(_targetsPuppets, Card.ColourTypes.Red, 9);
      
         _gameController.performAction(command);
+    }
+    public void testDraw(){
+        List<GameObject> targetsDeck = new List<GameObject> {GameObject.Find("DeckPrefab")};
+        Command command = new DrawCommad(targetsDeck, 2);
+        _gameController.performAction(command);
+
     }
     
 }
