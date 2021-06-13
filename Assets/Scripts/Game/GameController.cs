@@ -57,10 +57,7 @@ public class GameController : MonoBehaviour
     public void performAction(Command command){
         currentPhase.Execute(command);
     }
-    
-    public IPhase getCurrentPhase(){
-        return currentPhase;
-    }
+
     public GameObject getGameObject(){
         return gameObject;
     }
