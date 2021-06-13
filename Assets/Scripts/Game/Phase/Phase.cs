@@ -10,14 +10,14 @@ public  abstract class Phase
     protected string phaseName;
     protected bool _isPlayerOne;
     protected CommandProcessor _commandProcessor;
+    protected GameController _gameController;
     
     public Phase(bool isPlayerOne){
         _commandProcessor = new CommandProcessor();
        _isPlayerOne = isPlayerOne;
+       _gameController = GameObject.Find("HUB").GetComponent<GameController>();
     }
-   public Phase Execute(Command command){
-      
-
+   public virtual Phase Execute(Command command){
        if(IsValidAction(command))
           _commandProcessor.ExecuteCommand(command);
        return null;
@@ -41,7 +41,8 @@ public  abstract class Phase
          return _isPlayerOne;
      }
 
-    private bool IsValidAction(Command command){
+
+    protected bool IsValidAction(Command command){
         foreach( GameController.ActionType actionID in validAction )
         {
             if( actionID == command.getActionType())

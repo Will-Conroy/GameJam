@@ -6,15 +6,16 @@ using UnityEngine;
 public abstract class Command
 {
     protected List<GameObject> _targets;
-    protected GameController.ActionType type;
-    public Command(List<GameObject> targets)
+    protected GameController.ActionType _actionType;
+    public Command(List<GameObject> targets, GameController.ActionType actionType)
     {
         _targets = targets;
+        _actionType = actionType;
     }
 
     public abstract void Execute();
 
     public GameController.ActionType getActionType(){
-        return type;
+        return _actionType;
     }
 }

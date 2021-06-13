@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 public class GameController : MonoBehaviour
 {
-
+    /*-----Events-----*/
     public UnityEvent<(string, bool)> phaseChange;
+    /*-----ENUMS-----*/
     public enum PhasesName
     {
         Upkeep,
@@ -22,18 +23,16 @@ public class GameController : MonoBehaviour
         DrawCard,
         EquipCard,
         QueuePuppetAction,
-        PerfromingPuppetAction
+        PerfromPuppetAction
     }
+    /*-----Veriables-----*/
 
     private Phase currentPhase;
     private ManaPool manaPool;
-    //private List<Player> players;
-    //private bool isPlayerOne;
-    
+
     private void Awake()
     {
-        //players = new List<Player> {new Player(), new Player()};
-        //isPlayerOne = true;
+  
         currentPhase = new PhaseUpkeep(true);
         currentPhase.Enter();
         phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.isPlayerOne()));
@@ -52,6 +51,8 @@ public class GameController : MonoBehaviour
         currentPhase.Execute(command);
     }
 
+
+    /*-----Getters----*/
     public GameObject getGameObject(){
         return gameObject;
     }

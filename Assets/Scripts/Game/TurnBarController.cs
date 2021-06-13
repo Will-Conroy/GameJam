@@ -23,20 +23,16 @@ public class TurnBarController : MonoBehaviour
     }
    
     public void SetPhaseText((string, bool) textArray){
-        
         phaseNameValue.text =  textArray.Item1;
-        playerTurnValue.text = textArray.Item2.ToString();
+
+        string message = "P: 2";
+        if(textArray.Item2)
+            message = "P: 1";
+        
+        playerTurnValue.text = message;
     
     }
 
-    /*
-    public void endPhaseButtonExcute(){
-        IAction action = new APlayerEndsPhase();
-        List<GameObject> thisArray = new List<GameObject> {gameController.getGameObject()};
-
-       gameController.performAction(action, thisArray);
-        return;
-    }*/
      public void endPhaseButtonExcute(){
         
         List<GameObject> thisArray = new List<GameObject> {gameController.getGameObject()};
@@ -45,16 +41,6 @@ public class TurnBarController : MonoBehaviour
         
         return;
     }
-
-    /*
-    public void endPhaseButtonExcute(){
-        
-        List<GameObject> thisArray = new List<GameObject> {gameController.getGameObject()};
-        Command action = new PlayerEndPhaseCommand(thisArray);
-        //gameController.performAction(action, thisArray);
-        _commandProcessor.ExecuteCommand(action);
-        return;
-    }*/
 
 
    

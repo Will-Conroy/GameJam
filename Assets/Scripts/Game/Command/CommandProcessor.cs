@@ -8,7 +8,7 @@ public class CommandProcessor
    private int _currentComandIndex = -1;
 
    public void ExecuteCommand(Command command){
-       _commands.Add(command);
+       //_commands.Add(command);
        command.Execute();
        //_currentComandIndex = _commands.Count -1;
    }
@@ -23,4 +23,10 @@ public class CommandProcessor
        command?.Execute();
        //_currentComandIndex = _commands.Count -1;
    }
+
+   public void RunAllCommands(){
+       while(_commands.Count != 0)
+             ExecuteNext();
+    }
+   
 }

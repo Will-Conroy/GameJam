@@ -9,6 +9,8 @@ public class PhaseEnd : Phase
        validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase};
        nextPhase = new PhaseUpkeep(!_isPlayerOne);
        phaseName = "End";
+       _commandProcessor.AddCommand(new EndPhaseCommand(new List<GameObject> {_gameController.getGameObject()}, _isPlayerOne));
+       _commandProcessor.RunAllCommands();
        return;
     }
 }
