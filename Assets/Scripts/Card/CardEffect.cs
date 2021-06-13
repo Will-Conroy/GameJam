@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CardEffect {
-    protected string effectType;
+    protected EffectType type;
 
-    public string getType()
+    public enum EffectType{
+        Mana,
+        Draw,
+        GuyStuff
+    }
+
+    public EffectType getType()
     {
-        return effectType;
+        return type;
     }
 
     public virtual void activateEffect()
