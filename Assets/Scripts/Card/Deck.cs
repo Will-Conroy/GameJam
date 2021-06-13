@@ -84,4 +84,15 @@ public class Deck : Zone
         if(differnce > 0)
             Draw(differnce);
     }
+
+    public void shuffle(){
+        System.Random rng = new System.Random();
+        for (int n = cards.Count; n > 1; n--) {
+            int k = rng.Next(n);  
+            n--;  
+            Card tmp = cards[k];  
+            cards[k] = cards[n];  
+            cards[n] = tmp;  
+        }
+    }
 }
