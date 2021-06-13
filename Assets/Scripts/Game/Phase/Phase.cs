@@ -10,8 +10,6 @@ public class Phase : IPhase
     internal string phaseName;
     internal int playerID;
     
-    
-    
    public IPhase Tick(List<GameObject> targets, IAction action){
        if (action.getActionType() == GameController.ActionType.EndPhase)
             return nextPhase;
@@ -21,12 +19,16 @@ public class Phase : IPhase
        return null;
    }
 
-   public virtual  void Enter(List<GameObject> targets){
+   public IPhase NextPhase(){
+     return nextPhase;
+   }
+
+   public virtual  void Enter(){
        
         return;
     }
 
-    public void Exit(List<GameObject> targets){
+    public void Exit(){
          return;
     }
 
@@ -38,7 +40,6 @@ public class Phase : IPhase
          return 1;
      }
 
-
     private bool IsValidAction(IAction action){
         foreach( GameController.ActionType actionID in validAction )
         {
@@ -49,7 +50,4 @@ public class Phase : IPhase
 
         return false;
     }
-
-
- 
 }

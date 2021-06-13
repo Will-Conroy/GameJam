@@ -9,6 +9,8 @@ public class EndPhase : IAction
     }
 
     public void performAction(List<GameObject> targets){
+         GameController gamecon = targets[0].GetComponent<GameController>();
+         gamecon.nextPhase();
          return;
      }
 }

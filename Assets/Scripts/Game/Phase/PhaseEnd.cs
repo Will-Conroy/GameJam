@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PhaseEnd : Phase
 {
-    public override void Enter(List<GameObject> targets){
+    public override void Enter(){
        validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase};
        nextPhase = new PhaseUpkeep();
        phaseName = "End";

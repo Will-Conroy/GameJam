@@ -7,5 +7,3 @@ public interface IAction
      GameController.ActionType getActionType();
      void performAction(List<GameObject> targets);
 }
-  
-

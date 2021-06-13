@@ -25,7 +25,8 @@ public class GameController : MonoBehaviour
         AddMana,
         DrawCard,
         EquipCard,
-        QueuePuppetAction
+        QueuePuppetAction,
+        PerfromingPuppetAction
     }
 
     private IPhase currentPhase;
@@ -33,38 +34,36 @@ public class GameController : MonoBehaviour
     private TurnName playersTurn;
     private Dictionary<TurnName, Player> players;
     
-
     private void Awake()
     {
-        
         players = new Dictionary<TurnName, Player>(){
           {TurnName.PlayerOne, new Player()},
           {TurnName.PlayerTwo, new Player()}
         };
         currentPhase = new PhaseUpkeep();
-        currentPhase.Enter(null);
+        currentPhase.Enter();
         phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.getPlayerID()));
     }
-    private void nextPhase(){
-       /*List<GameObject> thisArray = new List<GameObject> {transform.parent.gameObject};
-        UpdateState( new EndPhase(), thisArray);*/
-        UpdateState( new EndPhase(), null);
+
+    public void nextPhase(){
+        IPhase newPhase = currentPhase.NextPhase();
+        currentPhase.Exit();
+        currentPhase = newPhase;
+        currentPhase.Enter();
+        phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.getPlayerID()));
         return;
     }
-    public void UpdateState(IAction action, List<GameObject> targets){
-        IPhase newPhase = currentPhase.Tick(targets, action);
 
-        if (newPhase != null)
-        {
-            currentPhase.Exit(targets);
-            currentPhase = newPhase;
-            currentPhase.Enter(targets);
-            
-            phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.getPlayerID()));
-        }
+    public void performAction(IAction action, List<GameObject> targets){
+        currentPhase.Tick(targets, action);
+        return;
     }
+
     public IPhase getCurrentPhase(){
         return currentPhase;
+    }
+    public GameObject getGameObject(){
+        return gameObject;
     }
 
 }

@@ -15,7 +15,7 @@ public class TurnBarController : MonoBehaviour
     private void Awake()
     {
         txtBar = GetComponentsInChildren<TextMeshProUGUI>();
-        gameController = GetComponentInChildren<GameController>();
+        gameController = GetComponentInParent<GameController>();
         playerTurnValue = txtBar[0];
         phaseNameValue = txtBar[1];
     }
@@ -28,8 +28,11 @@ public class TurnBarController : MonoBehaviour
     }
 
 
-    public void nextPhase(){
-        gameController.UpdateState( new EndPhase(), null);
+    public void endPhaseButtonExcute(){
+        IAction action = new APlayerEndsPhase();
+        List<GameObject> thisArray = new List<GameObject> {gameController.getGameObject()};
+
+       gameController.performAction(action, thisArray);
         return;
     }
 
