@@ -435,7 +435,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 194638670}
         m_TargetAssemblyTypeName: TestButtons, Assembly-CSharp
-        m_MethodName: testWeekness
+        m_MethodName: testDrawToHandSize
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -804,6 +804,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 902973073052488076, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3846406998197092756, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
+      propertyPath: m_TagString
+      value: Puppet
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209595989754024532, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999984
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209595989754024532, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.001794075
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209595989754024532, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.206
+      objectReference: {fileID: 0}
     - target: {fileID: 6526063682398018234, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -958,6 +978,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2983877763408879296, guid: ff334ae346e53cf4eb23c96d5efa9a55, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2983877763500222194, guid: ff334ae346e53cf4eb23c96d5efa9a55, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2983877763843741316, guid: ff334ae346e53cf4eb23c96d5efa9a55, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7082759577322887027, guid: ff334ae346e53cf4eb23c96d5efa9a55, type: 3}
       propertyPath: m_RootOrder
       value: 8
