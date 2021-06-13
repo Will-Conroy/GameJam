@@ -24,7 +24,7 @@ public class StatController : MonoBehaviour
 
     
     
-   private void Awake()
+   private void Start()
     {
       Heal(maxHealth);
       weaknesses = new Dictionary<Card.ColourTypes, int>(){
