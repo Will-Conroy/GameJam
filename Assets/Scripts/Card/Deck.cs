@@ -43,7 +43,7 @@ public class Deck : Zone
             GameObject c = Instantiate(Resources.Load("CardPrefab"), transform.position, Quaternion.identity) as GameObject;
             addCard(c.GetComponent<Card>());
         }
-        cards[0].GetComponent<GoTo>().moveComplete.AddListener(delegate{Draw(5);}); //Once the move is complete, draw 4
+        //cards[0].GetComponent<GoTo>().moveComplete.AddListener(delegate{Draw(5);}); //Once the move is complete, draw 4
 
     }
 
@@ -77,5 +77,11 @@ public class Deck : Zone
             hand.unlockCards();
             display();
         }
+    }
+
+    public void DrawToHandSize(){
+        int differnce = hand.getMaxHandSize() - hand.cardCount();
+        if(differnce > 0)
+            Draw(differnce);
     }
 }

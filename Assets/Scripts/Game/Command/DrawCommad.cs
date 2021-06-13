@@ -7,7 +7,7 @@ public class DrawCommad : Command
     private  Deck _deck;
     private int _amount;
 
-    public DrawCommad(List<GameObject> targets, int amount) : base(targets, GameController.ActionType.DrawCard){
+    public DrawCommad(List<GameObject> targets, int amount) : base(targets, GameController.ActionType.Draw){
         _deck = targets[0].GetComponent<Deck>();
         _amount = amount;
     }

@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
         EndPhase,
         PlayerEndPhase,
         AddMana,
-        DrawCard,
+        Draw,
         EquipCard,
         QueuePuppetAction,
         PerfromPuppetAction
@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     private Phase currentPhase;
     private ManaPool manaPool;
 
-    private void Awake()
+    private void Start()
     {
   
         currentPhase = new PhaseUpkeep(true);

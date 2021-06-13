@@ -51,4 +51,8 @@ public class Zone : MonoBehaviour
     {
 
     }
+
+    public int cardCount(){
+        return cards.Count;
+    }
 }

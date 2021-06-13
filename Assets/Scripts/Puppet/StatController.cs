@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-[RequireComponent(typeof(BoxCollider2D))]
+
 public class StatController : MonoBehaviour
 {
 

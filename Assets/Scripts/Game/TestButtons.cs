@@ -24,5 +24,12 @@ public class TestButtons : MonoBehaviour
         _gameController.performAction(command);
 
     }
+
+     public void testDrawToHandSize(){
+        List<GameObject> targetsDeck = new List<GameObject> {GameObject.Find("DeckPrefab")};
+        Command command = new DrawToHandSizeCommand(targetsDeck);
+        _gameController.performAction(command);
+
+    }
     
 }

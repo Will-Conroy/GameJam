@@ -17,7 +17,7 @@ public class TurnBarController : MonoBehaviour
     {
         txtBar = GetComponentsInChildren<TextMeshProUGUI>();
         gameController = GetComponentInParent<GameController>();
-        //_commandProcessor = GetComponentInParent<CommandProcessor>();
+        
         playerTurnValue = txtBar[0];
         phaseNameValue = txtBar[1];
     }

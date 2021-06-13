@@ -9,6 +9,8 @@ public class Hand : Zone
     private float maxWidth = 15f;
     [SerializeField]
     private float maxZ = 50f;
+    [SerializeField]
+    private int maxHandSize = 7;
 
     public override void display()
     {
@@ -47,6 +49,9 @@ public class Hand : Zone
         display();
     }
 
+    public int getMaxHandSize(){
+        return maxHandSize;
+    }
     void Awake()
     {
         /*for (int i = 0; i < 100; i++)
