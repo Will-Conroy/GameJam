@@ -10,12 +10,14 @@ public class TurnBarController : MonoBehaviour
     private TextMeshProUGUI phaseNameValue;
     //private Phase currentPhase;
     private GameController gameController;
+    private CommandProcessor _commandProcessor;
     private Phase currentPhase;
 
     private void Awake()
     {
         txtBar = GetComponentsInChildren<TextMeshProUGUI>();
         gameController = GetComponentInParent<GameController>();
+        //_commandProcessor = GetComponentInParent<CommandProcessor>();
         playerTurnValue = txtBar[0];
         phaseNameValue = txtBar[1];
     }
@@ -27,14 +29,33 @@ public class TurnBarController : MonoBehaviour
     
     }
 
-
+    /*
     public void endPhaseButtonExcute(){
         IAction action = new APlayerEndsPhase();
         List<GameObject> thisArray = new List<GameObject> {gameController.getGameObject()};
 
        gameController.performAction(action, thisArray);
         return;
+    }*/
+     public void endPhaseButtonExcute(){
+        
+        List<GameObject> thisArray = new List<GameObject> {gameController.getGameObject()};
+        Command action = new PlayerEndPhaseCommand(thisArray);
+        gameController.performAction(action);
+        
+        return;
     }
+
+    /*
+    public void endPhaseButtonExcute(){
+        
+        List<GameObject> thisArray = new List<GameObject> {gameController.getGameObject()};
+        Command action = new PlayerEndPhaseCommand(thisArray);
+        //gameController.performAction(action, thisArray);
+        _commandProcessor.ExecuteCommand(action);
+        return;
+    }*/
+
 
    
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 public interface IPhase{
-     IPhase Tick(List<GameObject>  targets, IAction action);
+     IPhase Execute(Command command);
      void Enter();
      void Exit();
      IPhase NextPhase();

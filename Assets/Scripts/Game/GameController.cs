@@ -53,12 +53,11 @@ public class GameController : MonoBehaviour
         phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.getPlayerID()));
         return;
     }
-
-    public void performAction(IAction action, List<GameObject> targets){
-        currentPhase.Tick(targets, action);
-        return;
+    
+    public void performAction(Command command){
+        currentPhase.Execute(command);
     }
-
+    
     public IPhase getCurrentPhase(){
         return currentPhase;
     }

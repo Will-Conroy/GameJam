@@ -5,17 +5,22 @@ using UnityEngine.Events;
 
 public class Phase : IPhase
 {
-    internal GameController.ActionType [] validAction;
-    internal Phase nextPhase;
-    internal string phaseName;
-    internal int playerID;
+    protected GameController.ActionType [] validAction;
+    protected Phase nextPhase;
+    protected string phaseName;
+    protected int playerID;
+    protected CommandProcessor _commandProcessor;
     
-   public IPhase Tick(List<GameObject> targets, IAction action){
-       if (action.getActionType() == GameController.ActionType.EndPhase)
+    public Phase(){
+        _commandProcessor = new CommandProcessor();
+    }
+
+   public IPhase Execute(Command command){
+       if (command.getActionType() == GameController.ActionType.EndPhase)
             return nextPhase;
 
-       if(IsValidAction(action))
-           action.performAction(targets);
+       if(IsValidAction(command))
+          _commandProcessor.ExecuteCommand(command);
        return null;
    }
 
@@ -40,11 +45,10 @@ public class Phase : IPhase
          return 1;
      }
 
-    private bool IsValidAction(IAction action){
+    private bool IsValidAction(Command command){
         foreach( GameController.ActionType actionID in validAction )
         {
-            
-            if( actionID == action.getActionType())
+            if( actionID == command.getActionType())
                 return true;
         }
 

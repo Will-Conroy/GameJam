@@ -5,9 +5,9 @@ using UnityEngine;
 
 public abstract class Command
 {
-    protected GameObject[] _targets;
+    protected List<GameObject> _targets;
     protected GameController.ActionType type;
-    public Command(GameObject[] targets)
+    public Command(List<GameObject> targets)
     {
         _targets = targets;
     }

@@ -6,7 +6,7 @@ public class PlayerEndPhaseCommand : Command
 {
     private  GameController gamecon;
 
-    public PlayerEndPhaseCommand(GameObject[] targets) : base(targets){
+    public PlayerEndPhaseCommand(List<GameObject> targets) : base(targets){
         type = GameController.ActionType.PlayerEndPhase;
         gamecon = _targets[0].GetComponent<GameController>();
         
