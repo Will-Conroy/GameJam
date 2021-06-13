@@ -9,6 +9,6 @@ public interface IPhase{
      void Exit();
      IPhase NextPhase();
      string getPhaseName();
-     int getPlayerID();
+     bool isPlayerOne();
 
 }

@@ -22,7 +22,7 @@ public class TurnBarController : MonoBehaviour
         phaseNameValue = txtBar[1];
     }
    
-    public void SetPhaseText((string, int) textArray){
+    public void SetPhaseText((string, bool) textArray){
         
         phaseNameValue.text =  textArray.Item1;
         playerTurnValue.text = textArray.Item2.ToString();
@@ -40,7 +40,7 @@ public class TurnBarController : MonoBehaviour
      public void endPhaseButtonExcute(){
         
         List<GameObject> thisArray = new List<GameObject> {gameController.getGameObject()};
-        Command action = new PlayerEndPhaseCommand(thisArray);
+        Command action = new PlayerEndPhaseCommand(thisArray, gameController.getIsPlayerOne());
         gameController.performAction(action);
         
         return;

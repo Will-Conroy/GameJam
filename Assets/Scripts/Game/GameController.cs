@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class GameController : MonoBehaviour
 {
 
-    public UnityEvent<(string, int)> phaseChange;
+    public UnityEvent<(string, bool)> phaseChange;
     public enum PhasesName
     {
         Upkeep,
@@ -13,10 +13,6 @@ public class GameController : MonoBehaviour
         Plan,
         Damage,
         End
-    }
-    public enum TurnName{
-        PlayerOne,
-        PlayerTwo
     }
 
     public enum ActionType{
@@ -29,28 +25,26 @@ public class GameController : MonoBehaviour
         PerfromingPuppetAction
     }
 
-    private IPhase currentPhase;
+    private Phase currentPhase;
     private ManaPool manaPool;
-    private TurnName playersTurn;
-    private Dictionary<TurnName, Player> players;
+    //private List<Player> players;
+    //private bool isPlayerOne;
     
     private void Awake()
     {
-        players = new Dictionary<TurnName, Player>(){
-          {TurnName.PlayerOne, new Player()},
-          {TurnName.PlayerTwo, new Player()}
-        };
-        currentPhase = new PhaseUpkeep();
+        //players = new List<Player> {new Player(), new Player()};
+        //isPlayerOne = true;
+        currentPhase = new PhaseUpkeep(true);
         currentPhase.Enter();
-        phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.getPlayerID()));
+        phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.isPlayerOne()));
     }
 
-    public void nextPhase(){
-        IPhase newPhase = currentPhase.NextPhase();
+    public void nextPhase(bool isPlayerOne){
+        Phase newPhase = currentPhase.NextPhase();
         currentPhase.Exit();
         currentPhase = newPhase;
         currentPhase.Enter();
-        phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.getPlayerID()));
+        phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.isPlayerOne()));
         return;
     }
     
@@ -60,6 +54,9 @@ public class GameController : MonoBehaviour
 
     public GameObject getGameObject(){
         return gameObject;
+    }
+    public bool getIsPlayerOne(){
+        return currentPhase.isPlayerOne();
     }
 
 }

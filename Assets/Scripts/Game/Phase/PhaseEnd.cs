@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PhaseEnd : Phase
 {
+    public PhaseEnd(bool isPlayerOne): base(isPlayerOne){}
     public override void Enter(){
        validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase};
-       nextPhase = new PhaseUpkeep();
+       nextPhase = new PhaseUpkeep(!_isPlayerOne);
        phaseName = "End";
        return;
     }

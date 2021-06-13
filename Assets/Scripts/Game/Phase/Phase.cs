@@ -3,37 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Phase : IPhase
+public  abstract class Phase
 {
     protected GameController.ActionType [] validAction;
     protected Phase nextPhase;
     protected string phaseName;
-    protected int playerID;
+    protected bool _isPlayerOne;
     protected CommandProcessor _commandProcessor;
     
-    public Phase(){
+    public Phase(bool isPlayerOne){
         _commandProcessor = new CommandProcessor();
+       _isPlayerOne = isPlayerOne;
     }
-
-   public IPhase Execute(Command command){
-       if (command.getActionType() == GameController.ActionType.EndPhase)
-            return nextPhase;
+   public Phase Execute(Command command){
+      
 
        if(IsValidAction(command))
           _commandProcessor.ExecuteCommand(command);
        return null;
    }
 
-   public IPhase NextPhase(){
+   public Phase NextPhase(){
      return nextPhase;
    }
 
-   public virtual  void Enter(){
-       
-        return;
-    }
+   public abstract  void Enter();
 
-    public void Exit(){
+    public virtual void Exit(){
          return;
     }
 
@@ -41,8 +37,8 @@ public class Phase : IPhase
         return phaseName;
     }
 
-    public int getPlayerID(){
-         return 1;
+    public bool isPlayerOne(){
+         return _isPlayerOne;
      }
 
     private bool IsValidAction(Command command){

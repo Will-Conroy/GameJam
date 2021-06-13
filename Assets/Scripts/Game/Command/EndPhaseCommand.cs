@@ -5,15 +5,17 @@ using UnityEngine;
 public class EndPhaseCommand : Command
 {
     private  GameController gamecon;
+    private bool player;
 
-    public EndPhaseCommand(List<GameObject> targets) : base(targets){
+    public EndPhaseCommand(List<GameObject> targets, bool isPlayerOne) : base(targets){
+        player = isPlayerOne;
         type = GameController.ActionType.EndPhase;
         gamecon = _targets[0].GetComponent<GameController>();
 
     }
 
     public override void Execute(){
-        gamecon.nextPhase();
+        gamecon.nextPhase(player);
         return;
     }
 }
