@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PuppetController : MonoBehaviour
 {
     
-    
+    GameObject _puppet;
     [SerializeField] private bool ownedByPlayerOne;
     /* Events */
     public UnityEvent PuppetMenuClick;
@@ -23,10 +23,11 @@ public class PuppetController : MonoBehaviour
 
     
     public void Awake(){
+        _puppet = gameObject.transform.parent.gameObject;
         if(ownedByPlayerOne){
-            gameObject.layer = (int) layerName.Attack;
+            _puppet.layer = (int) layerName.Attack;
         }else{
-            gameObject.layer = (int) layerName.Defend;
+            _puppet.layer = (int) layerName.Defend;
         }
     }
 
@@ -35,10 +36,10 @@ public class PuppetController : MonoBehaviour
     }
 
     public void toggleLayor(){
-        if (gameObject.layer == (int) layerName.Attack){
-            gameObject.layer =  (int) layerName.Defend;
+        if (_puppet.layer == (int) layerName.Attack){
+            _puppet.layer =  (int) layerName.Defend;
         }else{
-             gameObject.layer =(int)  layerName.Attack;
+             _puppet.layer =(int)  layerName.Attack;
         }
     }
 
