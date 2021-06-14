@@ -472,18 +472,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftStage
       objectReference: {fileID: 0}
-    - target: {fileID: 8710650606208646408, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
-      propertyPath: ownedByPlayerOne
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8710650606447097756, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
-      propertyPath: ownedByPlayerOne
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8710650606717954756, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
-      propertyPath: ownedByPlayerOne
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
 --- !u!1001 &1994911930

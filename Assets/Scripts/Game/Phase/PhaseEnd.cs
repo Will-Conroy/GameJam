@@ -13,4 +13,8 @@ public class PhaseEnd : Phase
        _commandProcessor.RunAllCommands();
        return;
     }
+    public override void Exit(){
+        _gameController.endTurn();
+    }
+    
 }

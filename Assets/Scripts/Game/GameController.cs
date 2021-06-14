@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class GameController : MonoBehaviour
 {
     /*-----Events-----*/
+    public UnityEvent turnEnded;
     public UnityEvent<(string, bool)> phaseChange;
     /*-----ENUMS-----*/
     public enum PhasesName
@@ -58,6 +59,9 @@ public class GameController : MonoBehaviour
     }
     public bool getIsPlayerOne(){
         return currentPhase.isPlayerOne();
+    }
+    public void endTurn(){
+            turnEnded?.Invoke();
     }
 
 }

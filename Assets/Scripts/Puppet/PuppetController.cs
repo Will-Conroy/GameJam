@@ -7,6 +7,7 @@ public class PuppetController : MonoBehaviour
 {
     
     GameObject _puppet;
+    GameController _gameController;
     [SerializeField] private bool ownedByPlayerOne;
     /* Events */
     public UnityEvent PuppetMenuClick;
@@ -23,12 +24,14 @@ public class PuppetController : MonoBehaviour
 
     
     public void Awake(){
+         _gameController = GameObject.Find("HUB").GetComponent<GameController>();
         _puppet = gameObject.transform.parent.gameObject;
         if(ownedByPlayerOne){
             _puppet.layer = (int) layerName.Attack;
         }else{
             _puppet.layer = (int) layerName.Defend;
         }
+        _gameController.turnEnded.AddListener(toggleLayor);
     }
 
     public bool isOwenedByPlayerOne(){
