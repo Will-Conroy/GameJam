@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Deck : Zone
 {
+    public UnityEvent endDraw = new UnityEvent();
     Hand hand;
     int drawing = 0;
     public override void display()
@@ -76,6 +78,7 @@ public class Deck : Zone
         } else{
             hand.unlockCards();
             display();
+            endDraw.Invoke();
         }
     }
 
@@ -89,7 +92,7 @@ public class Deck : Zone
         System.Random rng = new System.Random();
         for (int n = cards.Count; n > 1; n--) {
             int k = rng.Next(n);  
-            n--;  
+            n--;
             Card tmp = cards[k];  
             cards[k] = cards[n];  
             cards[n] = tmp;  
