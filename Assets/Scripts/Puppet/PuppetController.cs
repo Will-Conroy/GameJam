@@ -20,6 +20,8 @@ public class PuppetController : MonoBehaviour
     {
         PuppetMenuClick?.Invoke();
     }
+
+    
     public void Awake(){
         if(ownedByPlayerOne){
             gameObject.layer = (int) layerName.Attack;

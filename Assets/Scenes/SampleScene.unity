@@ -428,6 +428,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 2384129649200682956, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
+      propertyPath: PuppetMenuClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3846406998197092756, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
       propertyPath: m_TagString
       value: Puppet
@@ -446,7 +450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6526063682398018234, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6526063682398018234, guid: eb005b5da5214ad439b7437872a170e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -612,7 +616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7082759577322887027, guid: ff334ae346e53cf4eb23c96d5efa9a55, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7082759577322887027, guid: ff334ae346e53cf4eb23c96d5efa9a55, type: 3}
       propertyPath: m_LocalPosition.x
