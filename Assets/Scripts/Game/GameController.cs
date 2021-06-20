@@ -49,10 +49,12 @@ public class GameController : MonoBehaviour
     }
 
     public void nextPhase(bool isPlayerOne){
+        
         currentPhase.Exit();
         currentPhase = currentPhase.NextPhase();
-        currentPhase.Enter();   
         phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.isPlayerOne()));
+        currentPhase.Enter();   
+        
     }
     
     public void performAction(Command command){
