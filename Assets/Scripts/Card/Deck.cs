@@ -50,11 +50,12 @@ public class Deck : Zone
     }
 
     public void Draw (int numToDraw){
-        if (numToDraw < 1){
+        drawing = Mathf.Min(numToDraw, cards.Count); //add discard pile too
+        if (drawing < 1){
             endDraw?.Invoke();
             return;
         }
-        drawing = Mathf.Min(numToDraw, cards.Count); //add discard pile too
+        
         hand.lockCards();
         DrawNext();
 

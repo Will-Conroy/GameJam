@@ -9,32 +9,32 @@ public class CommandProcessor
     public UnityEvent commandExcutionStart = new UnityEvent();
     public UnityEvent<string> commandExcuted = new UnityEvent<string>();
     /*-----Veriables-----*/
-   private List<Command> _commands = new List<Command>();
+   private Queue<Command> _commands = new Queue<Command>();
    private int _currentComandIndex = -1;
+   private bool excuting;
 
    public void ExecuteCommand(Command command){
        //_commands.Add(command);
-       command.Execute();
+       command?.Execute();
        commandExcuted?.Invoke(command.getInfo());
        //_currentComandIndex = _commands.Count -1;
    }
 
    public void AddCommand(Command command){
-        _commands.Add(command);
+        _commands.Enqueue(command);
    }
 
    public void ExecuteNext(){
-       Command command = _commands[0];
-       _commands.RemoveAt(0);
-       command?.Execute();
-       commandExcuted?.Invoke(command.getInfo());
-       
+       ExecuteCommand(_commands.Dequeue());
        //_currentComandIndex = _commands.Count -1;
    }
 
    public void RunAllCommands(){
-       while(_commands.Count != 0)
-             ExecuteNext();
+       while(_commands.Count != 0){
+           if(!excuting)
+            ExecuteNext();
+       }
+             
     }
    
 }
