@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public abstract class Command
 {
     
+    public UnityEvent Excuted;
+
     protected List<GameObject> _targets;
     protected GameController.ActionType _actionType;
     protected string info;
@@ -17,6 +20,9 @@ public abstract class Command
 
     public abstract void Execute();
 
+    public void EndCommand(){
+        Excuted?.Invoke();
+    }
     public GameController.ActionType getActionType(){
         return _actionType;
     }

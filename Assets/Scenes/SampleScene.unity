@@ -891,6 +891,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7115222864503977503, guid: 9d2d5dbaba7f73b4c9ca256707d95e99, type: 3}
+      propertyPath: endDraw.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7115222864503977503, guid: 9d2d5dbaba7f73b4c9ca256707d95e99, type: 3}
+      propertyPath: endDraw.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7115222864503977503, guid: 9d2d5dbaba7f73b4c9ca256707d95e99, type: 3}
+      propertyPath: endDraw.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d2d5dbaba7f73b4c9ca256707d95e99, type: 3}
 --- !u!1 &1190143658

@@ -15,6 +15,6 @@ public class PlayerEndPhaseCommand : Command
 
     public override void Execute(){
         gamecon.nextPhase(player);
-        return;
+        EndCommand();
     }
 }

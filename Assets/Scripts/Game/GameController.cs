@@ -33,11 +33,19 @@ public class GameController : MonoBehaviour
     private ManaPool manaPool;
 
     /*----Methods----*/
+
+    private void Awake(){
+        currentPhase = new PhaseUpkeep(true);
+         phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.isPlayerOne()));
+    }
+
+
     private void Start()
     {
-        currentPhase = new PhaseUpkeep(true);
+        
         currentPhase.Enter();
-        phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.isPlayerOne()));
+        //phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.isPlayerOne()));
+       
     }
 
     public void nextPhase(bool isPlayerOne){

@@ -11,8 +11,7 @@ public class LogController : MonoBehaviour
     private int count;
     private bool isVisable;
 
- private void Awake()
-    {
+ private void Awake(){
         isVisable = true;
         toggleVisiable();
         count = 0;

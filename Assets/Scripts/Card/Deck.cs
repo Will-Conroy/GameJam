@@ -51,6 +51,7 @@ public class Deck : Zone
 
     public void Draw (int numToDraw){
         if (numToDraw < 1){
+            endDraw?.Invoke();
             return;
         }
         drawing = Mathf.Min(numToDraw, cards.Count); //add discard pile too
@@ -83,9 +84,8 @@ public class Deck : Zone
     }
 
     public void DrawToHandSize(){
-        int differnce = hand.getMaxHandSize() - hand.cardCount();
-        if(differnce > 0)
-            Draw(differnce);
+        int difference = hand.getMaxHandSize() - hand.cardCount();
+        Draw(difference);
     }
 
     public void shuffle(){

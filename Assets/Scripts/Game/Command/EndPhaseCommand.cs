@@ -15,6 +15,6 @@ public class EndPhaseCommand : Command
 
     public override void Execute(){
         _gamecontroller.nextPhase(player);
-        return;
+        EndCommand();
     }
 }

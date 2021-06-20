@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PhasePlan : Phase
 {
-    public PhasePlan(bool isPlayerOne): base(isPlayerOne){}
+    public PhasePlan(bool isPlayerOne): base(isPlayerOne){
+        phaseName = "Planing";
+    }
+
     public override void Enter(){
-       validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase, GameController.ActionType.PlayerEndPhase, GameController.ActionType.PerfromPuppetAction};
-       nextPhase = new PhaseDamage(_isPlayerOne, _commandProcessor);
-       phaseName = "Planing";
-       return;
+        nextPhase = new PhaseDamage(_isPlayerOne, _commandProcessor);
+        validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase, GameController.ActionType.PlayerEndPhase, GameController.ActionType.PerfromPuppetAction};
+        return;
     }
 
     public override void Execute(Command command){

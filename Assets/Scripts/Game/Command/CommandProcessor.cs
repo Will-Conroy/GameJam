@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class CommandProcessor 
 {
     /*-----Events-----*/
+    public UnityEvent commandExcutionStart = new UnityEvent();
     public UnityEvent<string> commandExcuted = new UnityEvent<string>();
     /*-----Veriables-----*/
    private List<Command> _commands = new List<Command>();

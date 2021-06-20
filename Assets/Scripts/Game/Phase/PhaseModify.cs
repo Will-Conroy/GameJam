@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PhaseModify : Phase
 {
-    public PhaseModify(bool isPlayerOne): base(isPlayerOne){}
+    public PhaseModify(bool isPlayerOne): base(isPlayerOne){
+        phaseName = "Modify";
+    }
 
    public override void Enter(){
        validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase, GameController.ActionType.PlayerEndPhase, GameController.ActionType.Draw};
        nextPhase = new PhasePlan(_isPlayerOne);
-       phaseName = "Modify";
         return;
     }
 }

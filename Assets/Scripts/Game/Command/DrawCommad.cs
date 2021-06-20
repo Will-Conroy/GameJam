@@ -15,5 +15,6 @@ public class DrawCommad : Command
 
     public override void Execute(){
         _deck.Draw(_amount);
+        _deck.endDraw.AddListener(EndCommand);
     }
 }
