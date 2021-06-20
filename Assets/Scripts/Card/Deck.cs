@@ -67,7 +67,8 @@ public class Deck : Zone
         CardFlip flipper = cards[0].GetComponent<CardFlip>();
         flipper.flip();
         flipper.flipComplete.AddListener(DrawComplete);
-        cards[1].show();
+        if (cards.Count >= 2)
+            cards[1].show();
     }
 
     private void DrawComplete(){
