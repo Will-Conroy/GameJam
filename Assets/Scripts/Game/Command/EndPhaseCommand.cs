@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class EndPhaseCommand : Command
 {
-    private  GameController gamecon;
+    private  GameController _gamecontroller;
     private bool player;
 
     public EndPhaseCommand(List<GameObject> targets, bool isPlayerOne) : base(targets, GameController.ActionType.EndPhase){
         player = isPlayerOne;
-        gamecon = _targets[0].GetComponent<GameController>();
-
-        
-
+        _gamecontroller = _targets[0].GetComponent<GameController>();
+        info = "Automaic Phase end";
     }
 
     public override void Execute(){
-        gamecon.nextPhase(player);
+        _gamecontroller.nextPhase(player);
         return;
     }
 }

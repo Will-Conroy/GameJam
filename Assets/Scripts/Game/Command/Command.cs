@@ -5,8 +5,10 @@ using UnityEngine;
 
 public abstract class Command
 {
+    
     protected List<GameObject> _targets;
     protected GameController.ActionType _actionType;
+    protected string info;
     public Command(List<GameObject> targets, GameController.ActionType actionType)
     {
         _targets = targets;
@@ -17,5 +19,8 @@ public abstract class Command
 
     public GameController.ActionType getActionType(){
         return _actionType;
+    }
+    public string  getInfo(){
+        return info;
     }
 }

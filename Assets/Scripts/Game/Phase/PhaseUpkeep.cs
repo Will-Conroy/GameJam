@@ -17,9 +17,7 @@ public class PhaseUpkeep : Phase
        GameObject DeckObject = GameObject.FindGameObjectWithTag("Deck");
        _commandProcessor.ExecuteCommand(new DrawToHandSizeCommand(new List<GameObject> {DeckObject}));
        DeckObject.GetComponent<Deck>().endDraw.AddListener(EndUpkeep);
-
     }
-
     public void EndUpkeep(){
         _commandProcessor.ExecuteCommand(new EndPhaseCommand(new List<GameObject> {_gameController.getGameObject()}, _isPlayerOne));
     }

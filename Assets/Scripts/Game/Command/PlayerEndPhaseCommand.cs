@@ -10,6 +10,7 @@ public class PlayerEndPhaseCommand : Command
     public PlayerEndPhaseCommand(List<GameObject> targets,  bool isPlayerOne) : base(targets, GameController.ActionType.PlayerEndPhase){
         gamecon = _targets[0].GetComponent<GameController>();
         player = isPlayerOne;
+        info = "Player Changed Phase";
     }
 
     public override void Execute(){

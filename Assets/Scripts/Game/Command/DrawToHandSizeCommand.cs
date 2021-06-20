@@ -8,6 +8,7 @@ public class DrawToHandSizeCommand : Command
 
     public DrawToHandSizeCommand(List<GameObject> targets) : base(targets, GameController.ActionType.Draw){
         _deck = targets[0].GetComponent<Deck>();
+        info = "Game: Drew to hand size";
     }
 
     public override void Execute(){

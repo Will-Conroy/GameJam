@@ -9,16 +9,15 @@ public class PhasePlan : Phase
        validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase, GameController.ActionType.PlayerEndPhase, GameController.ActionType.PerfromPuppetAction};
        nextPhase = new PhaseDamage(_isPlayerOne, _commandProcessor);
        phaseName = "Planing";
-       //_commandProcessor.AddCommand(new EndPhaseCommand(new List<GameObject> {_gameController.getGameObject()}, _isPlayerOne));
        return;
     }
 
-    public override Phase Execute(Command command){
+    public override void Execute(Command command){
     
         if(command.getActionType() ==GameController.ActionType.PlayerEndPhase || command.getActionType() ==GameController.ActionType.EndPhase  )
             _commandProcessor.ExecuteCommand(command);
         if(IsValidAction(command))
           _commandProcessor.AddCommand(command);
-        return null;
+          
    }
 }

@@ -10,6 +10,7 @@ public class DrawCommad : Command
     public DrawCommad(List<GameObject> targets, int amount) : base(targets, GameController.ActionType.Draw){
         _deck = targets[0].GetComponent<Deck>();
         _amount = amount;
+        info = string.Format("Game: Draw {0} Cards", amount);
     }
 
     public override void Execute(){
