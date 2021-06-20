@@ -21,9 +21,11 @@ public class LogController : MonoBehaviour
     }
 
     private void updateCurrentPhase((string, bool) textArray){
-        currentPhase?.commandExcuted.RemoveListener(updateText);
+        //currentPhase?.commandExcuted.RemoveListener(updateText);
+        currentPhase?.getCommandProcessor().commandExcutionStart.RemoveListener(updateText);
         currentPhase = _gameController.getCurrentPhase();
-        currentPhase.commandExcuted.AddListener(updateText);
+        //currentPhase.commandExcuted.AddListener(updateText);
+        currentPhase.getCommandProcessor().commandExcutionStart.AddListener(updateText);
     }
 
     private void updateText(string message){
