@@ -159,7 +159,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3738349126086448278}
   - component: {fileID: 8982493611365884334}
-  - component: {fileID: 3034808869234997994}
   - component: {fileID: 8815546712575609455}
   m_Layer: 0
   m_Name: CardNameText
@@ -228,14 +227,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!222 &3034808869234997994
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8189498875392869353}
-  m_CullTransparentMesh: 0
 --- !u!114 &8815546712575609455
 MonoBehaviour:
   m_ObjectHideFlags: 0
