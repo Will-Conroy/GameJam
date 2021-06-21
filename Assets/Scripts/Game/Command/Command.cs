@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public abstract class Command
 {
     
-    public UnityEvent Excuted;
+    public UnityEvent<Command> Excuted = new UnityEvent<Command>();
 
     protected List<GameObject> _targets;
     protected GameController.ActionType _actionType;
@@ -21,7 +21,7 @@ public abstract class Command
     public abstract void Execute();
 
     public void EndCommand(){
-        Excuted?.Invoke();
+        Excuted?.Invoke(this);
     }
     public GameController.ActionType getActionType(){
         return _actionType;

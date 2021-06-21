@@ -7,7 +7,7 @@ public  abstract class Phase
 {
 
     /*-----Events-----*/
-    public UnityEvent<string> commandExcuted = new UnityEvent<string>();
+    //public UnityEvent<string> commandExcuted = new UnityEvent<string>();
 
     /*-----Veriables-----*/
     protected GameController.ActionType [] validAction;
@@ -19,7 +19,7 @@ public  abstract class Phase
     
     public Phase(bool isPlayerOne){
         _commandProcessor = new CommandProcessor();
-        _commandProcessor.commandExcuted.AddListener(finishCommand);
+        //_commandProcessor.commandExcuted.AddListener(finishCommand);
        _isPlayerOne = isPlayerOne;
        _gameController = GameObject.Find("HUB").GetComponent<GameController>();
     }
@@ -61,10 +61,7 @@ public  abstract class Phase
 
         return false;
     }
-    private void finishCommand(string info){
-        commandExcuted?.Invoke(info);
-    }
-
+  
     public CommandProcessor getCommandProcessor(){
         return _commandProcessor;
     }

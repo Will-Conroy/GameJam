@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
 
     private void Awake(){
         currentPhase = new PhaseUpkeep(true);
-         phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.isPlayerOne()));
+        phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.isPlayerOne()));
     }
 
 
@@ -77,4 +77,7 @@ public class GameController : MonoBehaviour
     public Phase getCurrentPhase(){
         return currentPhase;
     }
+
+ 
+
 }
