@@ -15,22 +15,9 @@ public class PhaseUpkeep : Phase
         GameObject DeckObject = GameObject.FindGameObjectWithTag("Deck");
        _commandProcessor.AddCommand(new DrawToHandSizeCommand(new List<GameObject> {DeckObject}));
        _commandProcessor.AddCommand(new EndPhaseCommand(new List<GameObject> {_gameController.getGameObject()}, _isPlayerOne));
-       _commandProcessor.RunAllCommands();
-       //_commandProcessor.ExecuteCommand(new DrawToHandSizeCommand(new List<GameObject> {DeckObject}));
-       //EndUpkeep();
-
-    /*
-       if (GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>().getCards().Count >= 7){
-           EndUpkeep();
-           return;
-       }
-       GameObject DeckObject = GameObject.FindGameObjectWithTag("Deck");
-       _commandProcessor.ExecuteCommand(new DrawToHandSizeCommand(new List<GameObject> {DeckObject}));
-       DeckObject.GetComponent<Deck>().endDraw.AddListener(EndUpkeep);*/
+       _commandProcessor.RunAllCommands();  
     }
-    public void EndUpkeep(){
-        //_commandProcessor.ExecuteCommand(new EndPhaseCommand(new List<GameObject> {_gameController.getGameObject()}, _isPlayerOne));
-    }
+    
 
     
 }

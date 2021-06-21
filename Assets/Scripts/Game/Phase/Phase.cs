@@ -6,9 +6,6 @@ using UnityEngine.Events;
 public  abstract class Phase
 {
 
-    /*-----Events-----*/
-    //public UnityEvent<string> commandExcuted = new UnityEvent<string>();
-
     /*-----Veriables-----*/
     protected GameController.ActionType [] validAction;
     protected Phase nextPhase;
@@ -19,7 +16,6 @@ public  abstract class Phase
     
     public Phase(bool isPlayerOne){
         _commandProcessor = new CommandProcessor();
-        //_commandProcessor.commandExcuted.AddListener(finishCommand);
        _isPlayerOne = isPlayerOne;
        _gameController = GameObject.Find("HUB").GetComponent<GameController>();
     }
@@ -37,7 +33,6 @@ public  abstract class Phase
    public abstract  void Enter();
 
     public virtual void Exit(){
-        //Debug.Log(phaseName);
          return;
     }
 
@@ -51,11 +46,11 @@ public  abstract class Phase
 
 
     protected bool IsValidAction(Command command){
-        //Debug.Log(command.getActionType());
+
         foreach( GameController.ActionType actionID in validAction )
         {
             if( actionID == command.getActionType())
-                //Debug.Log(actionID);
+         
                 return true;
         }
 

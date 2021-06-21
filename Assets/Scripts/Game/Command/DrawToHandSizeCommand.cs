@@ -12,7 +12,8 @@ public class DrawToHandSizeCommand : Command
     }
 
     public override void Execute(){
-        _deck.DrawToHandSize();
         _deck.endDraw.AddListener(EndCommand);
+        _deck.DrawToHandSize();
+        
     }
 }
