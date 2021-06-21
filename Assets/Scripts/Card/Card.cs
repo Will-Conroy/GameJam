@@ -74,4 +74,8 @@ public class Card : MonoBehaviour {
     {
         mesh = GetComponentInChildren<TextMeshPro>();
     }
+
+    public CardEffect getEffect(){
+        return template?.getEffect();
+    }
 }
