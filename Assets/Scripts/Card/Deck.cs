@@ -72,6 +72,10 @@ public class Deck : Zone
     }
 
     private void DrawComplete(){
+        if (cards.Count < 1){
+            endDraw.Invoke();
+            return;
+        }
         Card drawnCard = removeCard();
         hand.addCard(drawnCard);
         drawnCard.GetComponent<CardFlip>().flipComplete.RemoveListener(DrawComplete);
