@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class CommandProcessor 
 {
     /*-----Events-----*/
-    public UnityEvent commandExcutionStart = new UnityEvent();
+    public UnityEvent<string> commandExcutionStart = new UnityEvent<string>();
     public UnityEvent<string> commandExcuted = new UnityEvent<string>();
     /*-----Veriables-----*/
    private Queue<Command> _commands = new Queue<Command>();
@@ -15,6 +15,7 @@ public class CommandProcessor
 
    public void ExecuteCommand(Command command){
        //_commands.Add(command);
+       commandExcutionStart?.Invoke(command.getInfo());
        command?.Execute();
        commandExcuted?.Invoke(command.getInfo());
        //_currentComandIndex = _commands.Count -1;

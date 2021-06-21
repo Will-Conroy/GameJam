@@ -64,4 +64,8 @@ public  abstract class Phase
     private void finishCommand(string info){
         commandExcuted?.Invoke(info);
     }
+
+    public CommandProcessor getCommandProcessor(){
+        return _commandProcessor;
+    }
 }
