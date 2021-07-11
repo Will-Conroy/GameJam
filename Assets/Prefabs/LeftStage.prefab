@@ -158,6 +158,10 @@ PrefabInstance:
       propertyPath: ownedByPlayerOne
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7604899569915603987, guid: 1018799a124eda742a9d8c0b2bee99ac, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1018799a124eda742a9d8c0b2bee99ac, type: 3}
 --- !u!4 &3846406998197092762 stripped

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4080748652144075709}
   - component: {fileID: 8729799072258729331}
   - component: {fileID: 6087172592504339235}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CardImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 3738349126086448278}
   - component: {fileID: 8982493611365884334}
   - component: {fileID: 8815546712575609455}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 2199763283541726467}
   - component: {fileID: 312141229201399187}
   - component: {fileID: 6108070800532414528}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CardPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

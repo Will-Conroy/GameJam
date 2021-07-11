@@ -57,8 +57,8 @@ public class GameController : MonoBehaviour
         
     }
     
-    public void performAction(Command command){
-        currentPhase.Execute(command);
+    public bool performAction(Command command){
+        return currentPhase.Execute(command);
     }
 
     public void endTurn(){
@@ -70,14 +70,33 @@ public class GameController : MonoBehaviour
         return gameObject;
     }
 
-    public bool getIsPlayerOne(){
+     public bool getIsPlayerOne(){
         return currentPhase.isPlayerOne();
     }
 
     public Phase getCurrentPhase(){
         return currentPhase;
     }
+    
+    public bool playCard(Command command, Dictionary<Card.ColourTypes, int> manaCost){
+        if(isEnoughMana(manaCost)){
+            if(performAction(command)){
+                removeMana(manaCost);
+                return true;
+            }
+        }
+        return false;
+    }
 
- 
+    //NEED IMPLMENTION
+    private bool isEnoughMana(Dictionary<Card.ColourTypes, int> manaCost){
+        return true;
 
+    }
+
+
+    //NEED IMPLMENTION
+    private void removeMana(Dictionary<Card.ColourTypes, int> mana){
+
+    }
 }

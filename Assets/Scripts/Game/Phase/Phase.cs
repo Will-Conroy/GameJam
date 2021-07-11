@@ -19,11 +19,11 @@ public  abstract class Phase
        _isPlayerOne = isPlayerOne;
        _gameController = GameObject.Find("HUB").GetComponent<GameController>();
     }
-   public virtual void Execute(Command command){
-       if(IsValidAction(command))
-          _commandProcessor.ExecuteCommand(command);
-          
-      
+   public virtual bool Execute(Command command){
+       bool vaild = IsValidAction(command);
+       if(vaild)
+           _commandProcessor.ExecuteCommand(command);
+        return vaild;      
    }
 
    public Phase NextPhase(){

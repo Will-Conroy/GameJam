@@ -76,11 +76,53 @@ public class Card : MonoBehaviour {
     void Awake()
     {
         mesh = GetComponentInChildren<TextMeshPro>();
-        //Layer 3 = card layer
-        gameObject.layer = 3;
     }
 
     public CardEffect getEffect(){
         return template?.getEffect();
+    }
+
+    public bool cardPlay( List<GameObject> collisions){
+        
+        Command cardCommand = null;
+        
+        if(getEffect()?.getType() == CardEffect.EffectType.EquipPuppet)
+        {
+            foreach (GameObject gObject in collisions)
+            {
+                // 6 = attacker layer
+                if(gObject.layer == 6){
+                    if(cardCommand == null){
+                        cardCommand = getEffect().constructCommand(new List<GameObject> {gObject});
+                    }else{
+                        return false;
+                    }
+                }
+            }  
+        }else{
+            foreach (GameObject gObject in collisions)
+            {
+                // 8 = PlayerCard
+                if(gObject.layer == 8)
+                    cardCommand = getEffect().constructCommand(null);
+            }  
+        }
+
+        if(cardCommand != null)
+        {
+            cardCommand?.Excuted.AddListener(delegate{movePlayedCard();});
+            if(GameObject.Find("HUB").GetComponent<GameController>().playCard(cardCommand, template?.getCost())){
+                //set Commanded to play locastion
+                
+            }
+        }
+             
+       
+
+        return false;
+    }
+
+    private void movePlayedCard(){
+
     }
 }

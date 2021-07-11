@@ -14,13 +14,16 @@ public class PhasePlan : Phase
         _commandProcessor.AddCommand(new PlayerEndPhaseCommand(new List<GameObject> {_gameController.getGameObject()}, _isPlayerOne));
     }
 
-    public override void Execute(Command command){
+    public override bool Execute(Command command){
     
         if(command.getActionType() ==GameController.ActionType.PlayerEndPhase)
             _commandProcessor.RunAllCommands();
-        if(IsValidAction(command))
+        
+        bool valid = IsValidAction(command);
+        if(valid)
           _commandProcessor.AddCommand(command);
-          
+        
+        return valid;
    }
 
 }

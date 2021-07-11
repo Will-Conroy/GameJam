@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectGuyStuff : CardEffect
+public class EffectEquipPuppet : CardEffect
 {
 
-    public EffectGuyStuff()
+    public EffectEquipPuppet()
     {
-        type = EffectType.GuyStuff;
+        type = EffectType.EquipPuppet;
     }
 
     public override void activateEffect()

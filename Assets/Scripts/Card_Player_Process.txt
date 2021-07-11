@@ -1,0 +1,12 @@
+1) card is released - <CardDrag.cs> OnMouseUp() --DONE
+2) if currentCollisions != empty: lock the hand & <Card.cs> boolean CardPlay(currentCollision) --DONE 1/2
+3) getEffect()?.getType() --DONE
+4) depending on the type - Draw & Mana interact with play area. GuyStuff interacts with one Puppet --DONE
+5) if a valid collision exists, construct the command and pass it + the mana cost to the game controller --DONE
+6) game controller checks there's enough mana (return false if not) & passes to current phase -- DONE 1/2
+7) current phase checks it is valid to run the command (return false if not) and passes it to the command processor then returns true --DONE
+9) if the card was played, deduct mana & return true --DONE
+10) if the card was played, assign to the play spot
+10.5) if the card was not played, return the card to the hand & unlock the hand
+[addendum - 10 & 10.5 can be accomplished by running GetComponentInParent<Zone>().display(); once the parent is correctly set]
+11) once the command has finished (event FinishCommandSingle) assign to the discard pile & unlock the hand

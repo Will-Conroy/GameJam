@@ -8,7 +8,7 @@ public class CardEffect {
     public enum EffectType{
         Mana,
         Draw,
-        GuyStuff
+        EquipPuppet
     }
 
     public EffectType getType()
@@ -19,5 +19,12 @@ public class CardEffect {
     public virtual void activateEffect()
     {
 
+    }
+
+
+    //NEEDS Implamention
+    public virtual Command constructCommand(List<GameObject> targets)
+    {
+        return null;
     }
 }
