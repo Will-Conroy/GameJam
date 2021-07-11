@@ -38,7 +38,10 @@ public class Deck : Zone
     void Awake()
     {
         hand = GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>();
-
+        CardTemplate cardTemplateDraw = new CardTemplate(null, new EffectDraw(2), "Draws 2 cards", "Draw");
+        GameObject drawCard = Instantiate(Resources.Load("CardPrefab"), transform.position, Quaternion.identity) as GameObject;
+        drawCard.GetComponent<Card>().loadFromTemplate(cardTemplateDraw,0);
+        addCard(drawCard.GetComponent<Card>());
 
         for (int i = 0; i < 15; i++)
         {

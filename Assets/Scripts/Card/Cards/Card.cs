@@ -107,9 +107,10 @@ public class Card : MonoBehaviour {
                     cardCommand = getEffect().constructCommand(null);
             }  
         }
+        
         if(cardCommand == null)
             return false;
-            
+
         cardCommand?.Excuted.AddListener(delegate{movePlayedCard();});
         return GameObject.Find("HUB").GetComponent<GameController>().playCard(cardCommand, template?.getCost());      
     }
