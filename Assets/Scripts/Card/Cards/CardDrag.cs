@@ -53,6 +53,7 @@ public class CardDrag : MonoBehaviour {
             followMouse = false;
             Debug.Log("Droped");
             if(currentCollisions.Count != 0){
+                Debug.Log("In");
                 GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>().lockCards();
                 GetComponentInParent<Card>().cardPlay(currentCollisions);
             }

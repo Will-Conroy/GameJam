@@ -107,7 +107,7 @@ public class Card : MonoBehaviour {
                     cardCommand = getEffect().constructCommand(null);
             }  
         }
-        
+
         if(cardCommand == null)
             return false;
 

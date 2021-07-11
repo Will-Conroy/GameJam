@@ -38,14 +38,11 @@ public class Deck : Zone
     void Awake()
     {
         hand = GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>();
-        CardTemplate cardTemplateDraw = new CardTemplate(null, new EffectDraw(2), "Draws 2 cards", "Draw");
-        GameObject drawCard = Instantiate(Resources.Load("CardPrefab"), transform.position, Quaternion.identity) as GameObject;
-        drawCard.GetComponent<Card>().loadFromTemplate(cardTemplateDraw,0);
-        addCard(drawCard.GetComponent<Card>());
-
         for (int i = 0; i < 15; i++)
         {
+            CardTemplate cardTemplateDraw = new CardTemplate(null, new EffectDraw(2), "Draws 2 cards", "Draw");
             GameObject c = Instantiate(Resources.Load("CardPrefab"), transform.position, Quaternion.identity) as GameObject;
+            c.GetComponent<Card>().loadFromTemplate(cardTemplateDraw,0);
             addCard(c.GetComponent<Card>());
         }
         //cards[0].GetComponent<GoTo>().moveComplete.AddListener(delegate{Draw(5);}); //Once the move is complete, draw 4
