@@ -58,9 +58,8 @@ public class CardDrag : MonoBehaviour {
                 //Lock Hand here
                 GetComponentInParent<Card>().cardPlay(currentCollisions);
             }
-            if (transform.parent.parent.gameObject.CompareTag("Hand")){
-                GetComponentInParent<Hand>().display();
-            }
+
+            GetComponentInParent<Zone>().display();
         }
     }
 
