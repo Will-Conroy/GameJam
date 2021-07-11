@@ -21,7 +21,6 @@ public class CardEffect {
 
     }
 
-
     //NEEDS Implamention
     public virtual Command constructCommand(List<GameObject> targets)
     {

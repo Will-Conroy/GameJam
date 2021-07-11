@@ -107,19 +107,11 @@ public class Card : MonoBehaviour {
                     cardCommand = getEffect().constructCommand(null);
             }  
         }
-
-        if(cardCommand != null)
-        {
-            cardCommand?.Excuted.AddListener(delegate{movePlayedCard();});
-            if(GameObject.Find("HUB").GetComponent<GameController>().playCard(cardCommand, template?.getCost())){
-                //set Commanded to play locastion
-                
-            }
-        }
-             
-       
-
-        return false;
+        if(cardCommand == null)
+            return false;
+            
+        cardCommand?.Excuted.AddListener(delegate{movePlayedCard();});
+        return GameObject.Find("HUB").GetComponent<GameController>().playCard(cardCommand, template?.getCost());      
     }
 
     private void movePlayedCard(){

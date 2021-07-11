@@ -1,5 +1,5 @@
 1) card is released - <CardDrag.cs> OnMouseUp() --DONE
-2) if currentCollisions != empty: lock the hand & <Card.cs> boolean CardPlay(currentCollision) --DONE 1/2
+2) if currentCollisions != empty: lock the hand & <Card.cs> boolean CardPlay(currentCollision) --DONE
 3) getEffect()?.getType() --DONE
 4) depending on the type - Draw & Mana interact with play area. GuyStuff interacts with one Puppet --DONE
 5) if a valid collision exists, construct the command and pass it + the mana cost to the game controller --DONE

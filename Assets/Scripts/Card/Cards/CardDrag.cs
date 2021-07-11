@@ -26,8 +26,6 @@ public class CardDrag : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     {
         currentCollisions.Add(col.gameObject);
-        Debug.Log("Entered");
-
     }
 
     void OnTriggerExit2D(Collider2D col)
@@ -54,12 +52,13 @@ public class CardDrag : MonoBehaviour {
         {
             followMouse = false;
             Debug.Log("Droped");
-            if(currentCollisions.Count == 0){
-                //Lock Hand here
+            if(currentCollisions.Count != 0){
+                GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>().lockCards();
                 GetComponentInParent<Card>().cardPlay(currentCollisions);
             }
-
             GetComponentInParent<Zone>().display();
+            GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>().unlockCards();
+
         }
     }
 
