@@ -28,6 +28,9 @@ public class Card : MonoBehaviour {
         template = templateToLoad;
         mesh.text = template.getDesc();
         owner = player;
+        
+    
+        
     }
     
     //cardObject = Instantiate(Resources.Load("CardPrefab"), new Vector3(0, 0, 0), Quaternion.identity) as GameObject; use this to instantiate card prefabs later
@@ -73,6 +76,8 @@ public class Card : MonoBehaviour {
     void Awake()
     {
         mesh = GetComponentInChildren<TextMeshPro>();
+        //Layer 3 = card layer
+        gameObject.layer = 3;
     }
 
     public CardEffect getEffect(){
