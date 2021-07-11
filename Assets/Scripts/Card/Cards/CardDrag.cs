@@ -59,9 +59,8 @@ public class CardDrag : MonoBehaviour {
                 Debug.Log("boop");
                 //Apply card to overlapped object. Requires target to have a collider
             }
-            if (transform.parent.parent.gameObject.CompareTag("Hand")){
-                GetComponentInParent<Hand>().display();
-            }
+
+            GetComponentInParent<Zone>().display();
         }
     }
 
