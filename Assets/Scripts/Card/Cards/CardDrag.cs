@@ -26,6 +26,8 @@ public class CardDrag : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     {
         currentCollisions.Add(col.gameObject);
+        Debug.Log("Entered");
+
     }
 
     void OnTriggerExit2D(Collider2D col)
@@ -51,8 +53,10 @@ public class CardDrag : MonoBehaviour {
         if (followMouse)
         {
             followMouse = false;
+            Debug.Log("Droped");
             foreach (GameObject gObject in currentCollisions)
             {
+                Debug.Log("boop");
                 //Apply card to overlapped object. Requires target to have a collider
             }
             if (transform.parent.parent.gameObject.CompareTag("Hand")){
