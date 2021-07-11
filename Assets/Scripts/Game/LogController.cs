@@ -5,13 +5,16 @@ using TMPro;
 
 public class LogController : MonoBehaviour
 {
+    /*---- Veriables ----*/
     private TextMeshProUGUI logText;
     private GameController _gameController;
     private Phase currentPhase;
     private int count;
     private bool isVisable;
 
- private void Awake(){
+
+    /*---- Initialization ----*/
+      private void Awake(){
         isVisable = true;
         toggleVisiable();
         count = 0;
@@ -20,7 +23,9 @@ public class LogController : MonoBehaviour
         _gameController.phaseChange.AddListener(updateCurrentPhase);
     }
 
-    private void updateCurrentPhase((string, bool) textArray){
+
+    /*---- Methods ----*/
+        private void updateCurrentPhase((string, bool) textArray){
         currentPhase?.getCommandProcessor().commandExcutionStart.RemoveListener(updateText);
         currentPhase = _gameController.getCurrentPhase();
         currentPhase.getCommandProcessor().commandExcutionStart.AddListener(updateText);

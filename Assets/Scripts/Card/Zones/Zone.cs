@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Zone : MonoBehaviour
 {
+    /*---- Veriables ----*/
     protected List<Card> cards = new List<Card>();
     private int maxLength = 0;
 
-    public List<Card> getCards()
-    {
-        return cards;
-    }
 
+    /*---- Methods ----*/
     public void addCard(Card cardToAdd)
     {
         if (this.canAddCard())
@@ -43,10 +41,7 @@ public class Zone : MonoBehaviour
         return (cards.Count < maxLength || maxLength == 0);
     }
 
-    public Card getCard(int index){
-        return cards[index];
-    }
-
+ 
     public virtual void display()
     {
 
@@ -55,4 +50,18 @@ public class Zone : MonoBehaviour
     public int cardCount(){
         return cards.Count;
     }
+
+
+    /*---- Getters & Setters ----*/
+    public Card getCard(int index){
+        return cards[index];
+    }
+
+
+    public List<Card> getCards()
+    {
+        return cards;
+    }
+
+    
 }

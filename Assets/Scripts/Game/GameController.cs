@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 public class GameController : MonoBehaviour
 {
-    /*-----Events-----*/
+    /*---- Events -----*/
     public UnityEvent turnEnded;
     public UnityEvent<(string, bool)> phaseChange;
 
-    /*-----ENUMS-----*/
+
+    /*---- ENUMS ----*/
     public enum PhasesName
     {
         Upkeep,
@@ -28,18 +29,20 @@ public class GameController : MonoBehaviour
         PerfromPuppetAction
     }
 
-    /*-----Veriables-----*/
+
+    /*---- Veriables ----*/
     private Phase currentPhase;
     private ManaPool manaPool;
 
-    /*----Methods----*/
+    
 
+
+    /*---- Initialization ----*/
     private void Awake(){
         currentPhase = new PhaseUpkeep(true);
         phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.isPlayerOne()));
     }
-
-
+    
     private void Start()
     {
         
@@ -48,6 +51,8 @@ public class GameController : MonoBehaviour
        
     }
 
+
+    /*---- Methods ----*/
     public void nextPhase(bool isPlayerOne){
         
         currentPhase.Exit();
@@ -56,28 +61,8 @@ public class GameController : MonoBehaviour
         currentPhase.Enter();   
         
     }
-    
-    public bool performAction(Command command){
-        return currentPhase.Execute(command);
-    }
 
-    public void endTurn(){
-            turnEnded?.Invoke();
-    }
-    
-    /*-----Getters----*/
-    public GameObject getGameObject(){
-        return gameObject;
-    }
 
-     public bool getIsPlayerOne(){
-        return currentPhase.isPlayerOne();
-    }
-
-    public Phase getCurrentPhase(){
-        return currentPhase;
-    }
-    
     public bool playCard(Command command, Dictionary<Card.ColourTypes, int> manaCost){
         if(isEnoughMana(manaCost)){
             if(performAction(command)){
@@ -99,4 +84,28 @@ public class GameController : MonoBehaviour
     private void removeMana(Dictionary<Card.ColourTypes, int> mana){
 
     }
+    
+    public bool performAction(Command command){
+        return currentPhase.Execute(command);
+    }
+
+    public void endTurn(){
+            turnEnded?.Invoke();
+    }
+    
+
+    /*---- Getters & Setters ----*/
+    public GameObject getGameObject(){
+        return gameObject;
+    }
+
+     public bool getIsPlayerOne(){
+        return currentPhase.isPlayerOne();
+    }
+
+    public Phase getCurrentPhase(){
+        return currentPhase;
+    }
+    
+
 }

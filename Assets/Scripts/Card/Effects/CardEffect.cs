@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CardEffect {
-    protected EffectType type;
-
-    public enum EffectType{
+    /*---- ENUMS ----*/
+       public enum EffectType{
         Mana,
         Draw,
         EquipPuppet
     }
+    
+    
+    /*---- Veriables ----*/
+    protected EffectType type;
 
-    public EffectType getType()
-    {
-        return type;
-    }
 
+    /*---- Initialization ----*/
+
+
+    /*---- Methods ----*/
     public virtual void activateEffect()
     {
 
@@ -26,4 +29,11 @@ public class CardEffect {
     {
         return null;
     }
+
+
+    /*---- Getters & Setters ----*/
+    public EffectType getType()
+    {
+        return type;
+    }  
 }

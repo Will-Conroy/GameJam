@@ -5,17 +5,19 @@ using TMPro;
 
 public class WeaknessUI : MonoBehaviour
 {
-
+    /*---- Veriables ----*/
     private TextMeshProUGUI weaknessText;
     private StatController statController;
 
-    private void Awake()
+
+    /*---- Initialization ----*/
+      private void Awake()
     {
         weaknessText = GetComponent<TextMeshProUGUI>();
         statController = GetComponentInParent<StatController>();
         statController.PuppetWeaknessUpdated.AddListener(SetWeaknessText);
     }
-   
+    /*---- Methods ----*/
     public void SetWeaknessText(Dictionary<Card.ColourTypes, int> weaknesses){
         string outputText = "--Weakness-- \n";
         foreach( KeyValuePair<Card.ColourTypes, int> weakness in weaknesses )

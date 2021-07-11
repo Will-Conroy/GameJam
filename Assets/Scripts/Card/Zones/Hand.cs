@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Hand : Zone
 {
-    private bool isLocked = false;
+    /*---- ENUMS ----*/
+    /*---- Veriables ----*/
+     private bool isLocked = false;
     [SerializeField]
     private float maxWidth = 15f;
     [SerializeField]
@@ -12,6 +14,19 @@ public class Hand : Zone
     [SerializeField]
     private int maxHandSize = 7;
 
+
+    /*---- Initialization ----*/
+        void Awake()
+    {
+        /*for (int i = 0; i < 100; i++)
+        {
+            GameObject c = Instantiate(Resources.Load("CardPrefab"), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            addCard(c.GetComponent<Card>());
+        }*/
+    }
+
+
+    /*---- Methods ----*/
     public override void display()
     {
         for (int i = 0; i < cards.Count; i++)
@@ -49,15 +64,9 @@ public class Hand : Zone
         display();
     }
 
+
+    /*---- Getters & Setters ----*/
     public int getMaxHandSize(){
         return maxHandSize;
-    }
-    void Awake()
-    {
-        /*for (int i = 0; i < 100; i++)
-        {
-            GameObject c = Instantiate(Resources.Load("CardPrefab"), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-            addCard(c.GetComponent<Card>());
-        }*/
     }
 }

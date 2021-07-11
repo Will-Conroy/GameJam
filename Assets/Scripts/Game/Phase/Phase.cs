@@ -5,21 +5,25 @@ using UnityEngine.Events;
 
 public  abstract class Phase
 {
-
-    /*-----Veriables-----*/
+    /*---- Veriables ----*/
     protected GameController.ActionType [] validAction;
     protected Phase nextPhase;
     protected string phaseName;
     protected bool _isPlayerOne;
     protected CommandProcessor _commandProcessor;
     protected GameController _gameController;
-    
-    public Phase(bool isPlayerOne){
+
+
+    /*---- Initialization ----*/
+       public Phase(bool isPlayerOne){
         _commandProcessor = new CommandProcessor();
        _isPlayerOne = isPlayerOne;
        _gameController = GameObject.Find("HUB").GetComponent<GameController>();
     }
-   public virtual bool Execute(Command command){
+
+
+    /*---- Methods ----*/
+    public virtual bool Execute(Command command){
        bool vaild = IsValidAction(command);
        if(vaild)
            _commandProcessor.ExecuteCommand(command);
@@ -57,6 +61,9 @@ public  abstract class Phase
         return false;
     }
   
+
+
+    /*---- Getters & Setters ----*/
     public CommandProcessor getCommandProcessor(){
         return _commandProcessor;
     }

@@ -5,24 +5,24 @@ using UnityEngine.Events;
 
 public class PuppetController : MonoBehaviour
 {
-    
-    GameObject _puppet;
-    GameController _gameController;
-    [SerializeField] private bool ownedByPlayerOne;
-    /* Events */
-    public UnityEvent PuppetMenuClick;
-     enum layerName
+    /*---- ENUMS ----*/
+       enum layerName
         {
             Attack = 6,
             Defend = 7,
         };
-    
-    void OnMouseDown()
-    {
-        PuppetMenuClick?.Invoke();
-    }
 
-    
+    /*---- Events ----*/
+    public UnityEvent PuppetMenuClick;
+
+
+    /*---- Veriables ----*/
+    GameObject _puppet;
+    GameController _gameController;
+    [SerializeField] private bool ownedByPlayerOne;
+
+
+    /*---- Initialization ----*/
     public void Awake(){
          _gameController = GameObject.Find("HUB").GetComponent<GameController>();
         _puppet = gameObject.transform.parent.gameObject;
@@ -34,6 +34,13 @@ public class PuppetController : MonoBehaviour
         _gameController.turnEnded.AddListener(toggleLayor);
     }
 
+
+    /*---- Methods ----*/
+    void OnMouseDown()
+    {
+        PuppetMenuClick?.Invoke();
+    }
+    
     public bool isOwenedByPlayerOne(){
         return ownedByPlayerOne;
     }
@@ -45,5 +52,4 @@ public class PuppetController : MonoBehaviour
              _puppet.layer =(int)  layerName.Attack;
         }
     }
-
 }

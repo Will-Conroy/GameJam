@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PhaseDamage : Phase
 {
+    /*---- Initialization ----*/
     public PhaseDamage(bool isPlayerOne, CommandProcessor commandProcessor): base(isPlayerOne){
         _commandProcessor = commandProcessor;
         phaseName = "Damage";
     }
-    
+
+
+    /*---- Methods ----*/
     public override void Enter(){
        validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase, GameController.ActionType.PerfromPuppetAction};
        nextPhase = new PhaseEnd(_isPlayerOne);

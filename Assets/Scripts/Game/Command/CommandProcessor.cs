@@ -5,15 +5,22 @@ using UnityEngine.Events;
 
 public class CommandProcessor
 {
-    /*-----Events-----*/
+    /*---- Events ----*/
     public UnityEvent<string> commandExcutionStart = new UnityEvent<string>();
+
+
     /*-----Veriables-----*/
    private Queue<Command> _commands = new Queue<Command>();
    private bool excuting;
-   public CommandProcessor(){
-       excuting = false;
-   }
 
+
+    /*---- Initialization ----*/
+    public CommandProcessor(){
+        excuting = false;
+    }
+
+
+    /*---- Methods ----*/
    public void ExecuteCommand(Command command){
        if(!excuting){
            setExcuting(true);

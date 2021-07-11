@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EffectEquipPuppet : CardEffect
 {
-
-    public EffectEquipPuppet()
+    /*---- Methods ----*/
+     public EffectEquipPuppet()
     {
         type = EffectType.EquipPuppet;
     }
@@ -14,5 +14,4 @@ public class EffectEquipPuppet : CardEffect
     {
         //take a guy as argument, apply effect to guy
     }
-
 }

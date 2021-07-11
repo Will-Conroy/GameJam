@@ -7,8 +7,7 @@ using UnityEngine.Events;
 
 public class StatController : MonoBehaviour
 {
-
-    /* Events */
+    /*---- Events ----*/
     public UnityEvent<int> PuppetHit;
     public UnityEvent<int> PuppetHealed;
     public UnityEvent PuppetNewAction;
@@ -17,13 +16,12 @@ public class StatController : MonoBehaviour
     public UnityEvent<Dictionary<Card.ColourTypes, int>> PuppetWeaknessUpdated;
 
 
-    /* Veriables */
-    [SerializeField] private int maxHealth;
+    /*---- Veriables ----*/    [SerializeField] private int maxHealth;
     private int health;
     Dictionary <Card.ColourTypes, int> weaknesses;
 
     
-    
+    /*---- Initialization ----*/
    private void Start()
     {
       Heal(maxHealth);
@@ -36,6 +34,8 @@ public class StatController : MonoBehaviour
       PuppetWeaknessUpdated?.Invoke(weaknesses);
     }
 
+
+    /*---- Methods ----*/
     private void Update(){
         //Damage(1);
         //Heal(1);

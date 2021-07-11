@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PhaseEnd : Phase
 {
+
+    /*---- Initialization ----*/
     public PhaseEnd(bool isPlayerOne): base(isPlayerOne){
         phaseName = "End";
     }
 
+
+    /*---- Methods ----*/
     public override void Enter(){
        validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase};
        nextPhase = new PhaseUpkeep(!_isPlayerOne);
@@ -18,5 +22,4 @@ public class PhaseEnd : Phase
     public override void Exit(){
         _gameController.endTurn();
     }
-    
 }

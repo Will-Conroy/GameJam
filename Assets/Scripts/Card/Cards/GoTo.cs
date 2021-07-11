@@ -5,26 +5,29 @@ using UnityEngine.Events;
 
 public class GoTo : MonoBehaviour
 {
+    /*---- ENUMS ----*/
+
+    /*---- Events ----*/     
+    public UnityEvent moveComplete = new UnityEvent();
+
+
+    /*----Veriables----*/
     private bool movementLocked = false;
     private bool hasReachedTarget = true;
     float t;
     private Vector3 target;
     private float speed = 0.05f;
-    public UnityEvent moveComplete = new UnityEvent();
 
-    public void setTarget(Vector3 newTarget)
-    {
-        t = 0;
-        target = newTarget;
-        hasReachedTarget = false;
-    }
 
+    /*----Initialization----*/
     void Awake()
     {
         target = transform.position;
     }
 
-    // Update is called once per frame
+
+    /*----Methods----*/
+      // Update is called once per frame
     void Update()
     {
         if (!hasReachedTarget){
@@ -47,5 +50,14 @@ public class GoTo : MonoBehaviour
         hasReachedTarget = true;
         moveComplete.Invoke();
         moveComplete.RemoveAllListeners();
+    }
+
+
+    /*----Getters & Setters----*/
+    public void setTarget(Vector3 newTarget)
+    {
+        t = 0;
+        target = newTarget;
+        hasReachedTarget = false;
     }
 }

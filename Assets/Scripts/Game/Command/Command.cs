@@ -6,23 +6,30 @@ using UnityEngine.Events;
 
 public abstract class Command
 {
-    
+    /*---- Events ----*/
     public UnityEvent<Command> Excuted = new UnityEvent<Command>();
-
-    protected List<GameObject> _targets;
+    
+    /*---- Veriables ----*/
+      protected List<GameObject> _targets;
     protected GameController.ActionType _actionType;
     protected string info;
-    public Command(List<GameObject> targets, GameController.ActionType actionType)
+
+
+    /*---- Initialization ----*/
+       public Command(List<GameObject> targets, GameController.ActionType actionType)
     {
         _targets = targets;
         _actionType = actionType;
     }
-
-    public abstract void Execute();
+    /*---- Methods ----*/
+       public abstract void Execute();
 
     public void EndCommand(){
         Excuted?.Invoke(this);
     }
+
+
+    /*---- Getters & Setters ----*/
     public GameController.ActionType getActionType(){
         return _actionType;
     }

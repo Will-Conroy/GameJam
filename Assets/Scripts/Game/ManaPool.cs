@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ManaPool : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    /*---- Initialization ----*/
+       void Start()
     {
         
     }
@@ -15,4 +15,5 @@ public class ManaPool : MonoBehaviour
     {
         
     }
+
 }

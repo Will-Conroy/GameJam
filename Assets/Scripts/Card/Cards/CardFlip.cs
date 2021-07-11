@@ -5,17 +5,28 @@ using UnityEngine.Events;
 
 public class CardFlip : MonoBehaviour
 {
+    /*---- ENUMS ----*/
+    
+    
+    /*---- Events ----*/
+    public UnityEvent flipComplete = new UnityEvent();
+
+
+    /*---- Veriables ----*/
     private bool halfPassed = false;
     private bool doFlip = false;
     private Vector3 startPos;
     private float t;
-    public UnityEvent flipComplete = new UnityEvent();
     private float flipTime = 0.5f;
 
+
+    /*---- Initialization ----*/
     void Awake()
     {
     }
 
+
+    /*---- Methods ----*/
     public void flip(){
         t = 0;
         doFlip = true;
@@ -44,5 +55,8 @@ public class CardFlip : MonoBehaviour
             flipComplete.Invoke();
         }
     }
+
+
+    /*---- Getters & Setters ----*/
 
 }

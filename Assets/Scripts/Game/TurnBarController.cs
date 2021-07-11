@@ -5,6 +5,7 @@ using TMPro;
 
 public class TurnBarController : MonoBehaviour
 {
+    /*---- Veriables ----*/
     private TextMeshProUGUI[] txtBar;
     private TextMeshProUGUI playerTurnValue;
     private TextMeshProUGUI phaseNameValue;
@@ -13,7 +14,9 @@ public class TurnBarController : MonoBehaviour
     private CommandProcessor _commandProcessor;
     private Phase currentPhase;
 
-    private void Awake()
+
+    /*---- Initialization ----*/
+     private void Awake()
     {
         txtBar = GetComponentsInChildren<TextMeshProUGUI>();
         gameController = GetComponentInParent<GameController>();
@@ -21,7 +24,9 @@ public class TurnBarController : MonoBehaviour
         playerTurnValue = txtBar[0];
         phaseNameValue = txtBar[1];
     }
-   
+
+    
+    /*---- Methods ----*/
     public void SetPhaseText((string, bool) textArray){
         phaseNameValue.text =  textArray.Item1;
 

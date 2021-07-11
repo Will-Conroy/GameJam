@@ -5,9 +5,34 @@ using UnityEngine.Events;
 
 public class Deck : Zone
 {
+    /*---- Events ----*/
     public UnityEvent endDraw = new UnityEvent();
+
+
+    /*---- Veriables ----*/
+    
     Hand hand;
     int drawing = 0;
+
+
+
+    /*---- Initialization ----*/
+        void Awake()
+    {
+        hand = GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>();
+        for (int i = 0; i < 15; i++)
+        {
+            CardTemplate cardTemplateDraw = new CardTemplate(null, new EffectDraw(2), "Draws 2 cards", "Draw");
+            GameObject c = Instantiate(Resources.Load("CardPrefab"), transform.position, Quaternion.identity) as GameObject;
+            c.GetComponent<Card>().loadFromTemplate(cardTemplateDraw,0);
+            addCard(c.GetComponent<Card>());
+        }
+        //cards[0].GetComponent<GoTo>().moveComplete.AddListener(delegate{Draw(5);}); //Once the move is complete, draw 4
+
+    }
+
+
+    /*---- Methods ----*/
     public override void display()
     {
         for (int i = 0; i < cards.Count; i++){
@@ -35,19 +60,7 @@ public class Deck : Zone
         display();
     }
 
-    void Awake()
-    {
-        hand = GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>();
-        for (int i = 0; i < 15; i++)
-        {
-            CardTemplate cardTemplateDraw = new CardTemplate(null, new EffectDraw(2), "Draws 2 cards", "Draw");
-            GameObject c = Instantiate(Resources.Load("CardPrefab"), transform.position, Quaternion.identity) as GameObject;
-            c.GetComponent<Card>().loadFromTemplate(cardTemplateDraw,0);
-            addCard(c.GetComponent<Card>());
-        }
-        //cards[0].GetComponent<GoTo>().moveComplete.AddListener(delegate{Draw(5);}); //Once the move is complete, draw 4
 
-    }
 
     public void Draw (int numToDraw){
         drawing = Mathf.Min(numToDraw, cards.Count); //add discard pile too
@@ -60,7 +73,6 @@ public class Deck : Zone
         DrawNext();
 
     }
-
     private void DrawNext()
     {
         drawing -= 1;
@@ -70,7 +82,6 @@ public class Deck : Zone
         if (cards.Count >= 2)
             cards[1].show();
     }
-
     private void DrawComplete(){
         if (cards.Count < 1){
             endDraw.Invoke();
@@ -88,7 +99,6 @@ public class Deck : Zone
             endDraw.Invoke();
         }
     }
-
     public void DrawToHandSize(){
         int difference = hand.getMaxHandSize() - hand.cardCount();
         Draw(difference);

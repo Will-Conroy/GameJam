@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class ApplyWeaknessCommand : Command
 {
+    /*---- Veriables ----*/
     private  List<StatController> puppets;
     private Card.ColourTypes _type;
     private int _amount;
 
+
+    /*---- Initialization ----*/
     public ApplyWeaknessCommand(List<GameObject> targets, Card.ColourTypes type, int amount) : base(targets, GameController.ActionType.PerfromPuppetAction){
         puppets = new List<StatController>();
         _type = type;
@@ -18,6 +21,8 @@ public class ApplyWeaknessCommand : Command
         }
     }
 
+    
+    /*---- Methods ----*/
     public override void Execute(){
         foreach(StatController puppet in puppets){
             puppet.UpdateWeekness(_type, _amount);

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PhaseUpkeep : Phase
 {
-   public PhaseUpkeep(bool isPlayerOne): base(isPlayerOne){
+    /*---- Initialization ----*/
+    public PhaseUpkeep(bool isPlayerOne): base(isPlayerOne){
         phaseName = "Upkeep";
         
    }
 
+
+    /*---- Methods ----*/
    public override void Enter(){
        nextPhase = new PhaseModify(_isPlayerOne);
        validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase, GameController.ActionType.Draw};

@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class EffectMana : CardEffect
 {
-
-    public EffectMana()
+    /*---- Initialization ----*/
+       public EffectMana()
     {
         type = EffectType.Mana;
     }
 
-    public override void activateEffect()
+
+    /*---- Methods ----*/
+       public override void activateEffect()
     {
         //add mana to the relevant mana pool
     }
-
 }

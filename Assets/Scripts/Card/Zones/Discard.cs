@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class Discard : Zone
 {
+    /*---- Initialization ----*/
+    void Awake()
+    {
+
+        for (int i = 0; i < 15; i++)
+        {
+            GameObject c = Instantiate(Resources.Load("CardPrefab"), transform.position, Quaternion.identity) as GameObject;
+            addCard(c.GetComponent<Card>());
+        }
+    }
+
+    
+    /*---- Methods ----*/
     public override void display()
     {
         for (int i = 0; i < cards.Count; i++){
@@ -21,7 +34,6 @@ public class Discard : Zone
 
         }
     }
-
     new public void addCard(Card cardToAdd)
     {
         cardToAdd.setDraggable(false);
@@ -31,17 +43,6 @@ public class Discard : Zone
         display();
         cards[cards.Count-1].GetComponent<GoTo>().moveComplete.AddListener(hideOthers);
     }
-
-    void Awake()
-    {
-
-        for (int i = 0; i < 15; i++)
-        {
-            GameObject c = Instantiate(Resources.Load("CardPrefab"), transform.position, Quaternion.identity) as GameObject;
-            addCard(c.GetComponent<Card>());
-        }
-    }
-
     private void hideOthers(){
         for (int i = 0; i < cards.Count - 1; i++){
             cards[i].hide();

@@ -5,8 +5,12 @@ using UnityEngine;
 public class EffectDraw : CardEffect
 {
 
-    private int amount;
-    public EffectDraw(int amountToDraw)
+    /*---- Veriables ----*/
+        private int amount;
+    
+
+    /*---- Methods ----*/
+        public EffectDraw(int amountToDraw)
     {
         amount = amountToDraw;
         type = EffectType.Draw;

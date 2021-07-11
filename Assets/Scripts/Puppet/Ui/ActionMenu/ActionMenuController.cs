@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class ActionMenuController : MonoBehaviour
 {
+    /*---- Veriables ----*/
     private bool isVisable;
     private GameObject[] puppets;
 
+
+    /*---- Initialization ----*/
     public void Awake(){
         puppets = GameObject.FindGameObjectsWithTag("Puppet");
         foreach(GameObject puppet in puppets)
@@ -15,6 +18,8 @@ public class ActionMenuController : MonoBehaviour
         gameObject.SetActive(isVisable);
     }
 
+    
+    /*---- Methods ----*/
     public void toggleVisiable(GameObject me){
         if(me == gameObject){
             isVisable = !isVisable;
