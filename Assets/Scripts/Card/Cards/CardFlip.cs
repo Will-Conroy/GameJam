@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 public class CardFlip : MonoBehaviour
 {
-    /*---- ENUMS ----*/
-    
-    
     /*---- Events ----*/
     public UnityEvent flipComplete = new UnityEvent();
 

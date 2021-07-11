@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class CardTemplate
 {
-    /*----ENUMS----*/
-
-
     /*----Veriables----*/
     private Dictionary<Card.ColourTypes, int> colourCost = new Dictionary<Card.ColourTypes, int>();
     private CardEffect cardEffect;
@@ -23,10 +20,6 @@ public class CardTemplate
         cardName = name;
     }
 
-
-    /*----Methods----*/
-
-    
     /*----Getters & Setters----*/
     public CardEffect getEffect()
     {

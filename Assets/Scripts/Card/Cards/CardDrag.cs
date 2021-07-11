@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CardDrag : MonoBehaviour {
-    /*---- ENUMS ----*/
-
-    
     /*---- Veriables ----*/
     private bool followMouse = false;
     private Vector3 relativePos;

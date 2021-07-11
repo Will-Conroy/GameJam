@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class GoTo : MonoBehaviour
 {
-    /*---- ENUMS ----*/
-
     /*---- Events ----*/     
     public UnityEvent moveComplete = new UnityEvent();
 
