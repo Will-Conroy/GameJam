@@ -65,8 +65,39 @@ public class Hand : Zone
     }
 
 
+    //discards the first x cards
+    public void discardCards(int amount){
+        if(amount > cards.Count)
+            amount = cards.Count;
+
+        for(int i = 0; i < amount; i++)
+            moveCardToNewZone(cards[i], GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>());
+    }
+
+    public void discardHand(){
+        for(int i = 0; i < cards.Count; i++)
+            moveCardToNewZone(cards[i], GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>());
+    }
+
+    public void discardCard(Card card){
+        moveCardToNewZone(card, GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>());
+    }
+
+    public void discardRandomCards(int amount){
+        if(amount > cards.Count)
+            amount = cards.Count;
+
+        for(int i = 0; i < amount; i++)
+            moveCardToNewZone(cards[Random.Range(0, cards.Count)], GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>());
+
+    }
+
     /*---- Getters & Setters ----*/
     public int getMaxHandSize(){
         return maxHandSize;
     }
+
+    
+
+
 }
