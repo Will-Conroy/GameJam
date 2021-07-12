@@ -270,10 +270,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edbdd925263dff4d9817864c6f51b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownedByPlayerOne: 0
   PuppetMenuClick:
     m_PersistentCalls:
       m_Calls: []
+  ownedByPlayerOne: 0
 --- !u!1 &1526998850812338292
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,7 +680,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2946567617792832640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.91, y: 0.96, z: 0}
+  m_LocalPosition: {x: -4.91, y: 0.96, z: 0.1}
   m_LocalScale: {x: 1.9423, y: 1.7803, z: 1}
   m_Children:
   - {fileID: 4429688778423624507}
