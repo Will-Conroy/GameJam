@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
         PlayerEndPhase,
         AddMana,
         Draw,
+        Discard,
         EquipCard,
         QueuePuppetAction,
         PerfromPuppetAction

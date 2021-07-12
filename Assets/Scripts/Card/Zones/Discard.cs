@@ -58,4 +58,10 @@ public class Discard : Zone
         }
         //Shuffle deck
     }
+
+
+    public void dumpToNewZone(Zone zone){
+        while(cards.Count > 0)
+            moveCardToNewZone(cards[0], zone);    
+    }
 }

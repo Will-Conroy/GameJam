@@ -61,9 +61,15 @@ public class Deck : Zone
     }
 
 
+    public void refillDeck(){
+        GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>().dumpToNewZone(this);
+        shuffle();
+    }
+
 
     public void Draw (int numToDraw){
-        drawing = Mathf.Min(numToDraw, cards.Count); //add discard pile too
+        //drawing = Mathf.Min(numToDraw, cards.Count); //add discard pile too
+        drawing = numToDraw;
         if (drawing < 1){
             endDraw?.Invoke();
             return;
@@ -73,14 +79,23 @@ public class Deck : Zone
         DrawNext();
 
     }
+
     private void DrawNext()
     {
-        drawing -= 1;
-        CardFlip flipper = cards[0].GetComponent<CardFlip>();
-        flipper.flip();
-        flipper.flipComplete.AddListener(DrawComplete);
-        if (cards.Count >= 2)
-            cards[1].show();
+        if(isEmpty())
+            refillDeck();
+
+        if(isEmpty()){
+            drawing = 0;
+            DrawComplete();
+        }else{
+            drawing -= 1;
+            CardFlip flipper = cards[0].GetComponent<CardFlip>();
+            flipper.flip();
+            flipper.flipComplete.AddListener(DrawComplete);
+            if (cards.Count >= 2)
+                cards[1].show();
+        }
     }
     private void DrawComplete(){
         if (cards.Count < 1){

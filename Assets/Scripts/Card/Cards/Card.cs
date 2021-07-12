@@ -125,10 +125,9 @@ public class Card : MonoBehaviour {
 
     private void finishPlayingCard(Command command){
         command.Excuted.RemoveListener(finishPlayingCard);
-        Debug.Log("finished playing");
         GameObject.FindGameObjectWithTag("Play").GetComponent<Zone>().moveCardToNewZone(this, GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>());
         GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>().unlockCards();
-        GetComponentInParent<Zone>().display();
+        //GetComponentInParent<Zone>().display();
     }
     private void movePlayedCard(Command command){
         

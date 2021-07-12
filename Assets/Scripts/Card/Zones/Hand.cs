@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Hand : Zone
 {
-    /*---- ENUMS ----*/
+  
+    /*---- Events ----*/
+    public UnityEvent endDiscard = new UnityEvent();
     /*---- Veriables ----*/
      private bool isLocked = false;
     [SerializeField]
@@ -14,10 +17,15 @@ public class Hand : Zone
     [SerializeField]
     private int maxHandSize = 7;
 
+    private Queue<Card> discardList = new Queue<Card>();
+
+    private Discard discard;
+
 
     /*---- Initialization ----*/
         void Awake()
     {
+        discard = GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>();
         /*for (int i = 0; i < 100; i++)
         {
             GameObject c = Instantiate(Resources.Load("CardPrefab"), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
@@ -65,32 +73,51 @@ public class Hand : Zone
     }
 
 
-    //discards the first x cards
-    public void discardCards(int amount){
-        if(amount > cards.Count)
-            amount = cards.Count;
-
-        for(int i = 0; i < amount; i++)
-            moveCardToNewZone(cards[i], GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>());
-    }
 
     public void discardHand(){
-        for(int i = 0; i < cards.Count; i++)
-            moveCardToNewZone(cards[i], GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>());
+       Discard(new Queue<Card>(cards));
+    }
+    public void Discard (Queue<Card> cardsToDiscard){
+        discardList = cardsToDiscard;
+        if (discardList.Count < 1){
+            endDiscard?.Invoke();
+            return;
+        }
+
+        DiscardNext();
+
     }
 
-    public void discardCard(Card card){
-        moveCardToNewZone(card, GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>());
+    private void DiscardNext()
+    {
+        //drawing -= 1;
+        CardFlip flipper = cards[0].GetComponent<CardFlip>();
+        flipper.flip();
+        flipper.flipComplete.AddListener(DiscardComplete);
+        if (cards.Count >= 2)
+            cards[1].show();
     }
 
-    public void discardRandomCards(int amount){
-        if(amount > cards.Count)
-            amount = cards.Count;
-
-        for(int i = 0; i < amount; i++)
-            moveCardToNewZone(cards[Random.Range(0, cards.Count)], GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>());
-
+    private void DiscardComplete(){
+        if (cards.Count < 1){
+            endDiscard.Invoke();
+            return;
+        }
+        Card discardedCard = discardList.Dequeue();
+        removeCard(discardedCard);
+        discard.addCard(discardedCard);
+        discardedCard.GetComponent<CardFlip>().flipComplete.RemoveListener(DiscardComplete);
+        //if no more cards are present, shuffle in the discard pile and continue
+        if (discardList.Count > 0){
+            DiscardNext();
+        } else{
+            display();
+            endDiscard.Invoke();
+        }
     }
+
+
+
 
     /*---- Getters & Setters ----*/
     public int getMaxHandSize(){

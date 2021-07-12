@@ -41,6 +41,7 @@ public class Zone : MonoBehaviour
         if(cards.Contains(cardToMove)){
             zoneToMoveTo.addCard(cardToMove);
             removeCard(cardToMove);
+            zoneToMoveTo.display();
         }
     }
 
@@ -52,8 +53,9 @@ public class Zone : MonoBehaviour
  
     public virtual void display()
     {
-        cards[0].moveTo(transform.position + new Vector3(0,0,-1));
-        cards[0].show();
+        int displayCount = Mathf.Max(0, cards.Count-1);
+        cards[displayCount].moveTo(transform.position + new Vector3(0,0,-1));
+        cards[displayCount].show();
 
     }
 
@@ -61,6 +63,9 @@ public class Zone : MonoBehaviour
         return cards.Count;
     }
 
+    public bool isEmpty(){
+        return cards.Count < 1;
+    }
 
     /*---- Getters & Setters ----*/
     public Card getCard(int index){
