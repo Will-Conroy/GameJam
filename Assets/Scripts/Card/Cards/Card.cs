@@ -25,6 +25,7 @@ public class Card : MonoBehaviour {
     private Sprite cardSpriteBack1;
     [SerializeField]
     private Sprite cardSpriteBack2;
+    private bool isTextVisible = true;
 
 
     /*---- Initialization ----*/
@@ -47,26 +48,39 @@ public class Card : MonoBehaviour {
         return draggable;
     }
 
-    public void show()
-    {
-        transform.GetChild(0).gameObject.SetActive(true);
-    }
 
-    public void hide()
-    {
-        transform.GetChild(0).gameObject.SetActive(false);
+    public void setVisible(bool isVisible){
+        for (int i = 0; i < transform.childCount; i++){
+            transform.GetChild(i).gameObject.SetActive(isVisible);
+        }
+
+        if (!isTextVisible){
+            mesh.gameObject.SetActive(false);
+        }
+
     }
 
     public void back()
     {
+        isTextVisible = false;
         mesh.gameObject.SetActive(false);
-        transform.GetComponentInChildren<SpriteRenderer>().sprite = owner == 1 ? cardSpriteBack1 : cardSpriteBack2;
+        changeImage(owner == 1 ? cardSpriteBack1 : cardSpriteBack2);
     }
 
     public void front()
     {
-        mesh.gameObject.SetActive(true);
-        transform.GetComponentInChildren<SpriteRenderer>().sprite = cardSpriteFront;
+        isTextVisible = true;
+        //make text visible if card is visible
+        mesh.gameObject.SetActive(transform.GetChild(0).gameObject.activeInHierarchy);
+        changeImage(cardSpriteFront);
+    }
+
+    private void changeImage(Sprite newImage){
+        Transform spriteChild = transform.GetChild(0);
+        bool isSpriteVisible = spriteChild.gameObject.activeInHierarchy;
+        spriteChild.gameObject.SetActive(true);
+        spriteChild.GetComponent<SpriteRenderer>().sprite = newImage;
+        spriteChild.gameObject.SetActive(isSpriteVisible);
     }
 
     public void moveTo(Vector3 position)

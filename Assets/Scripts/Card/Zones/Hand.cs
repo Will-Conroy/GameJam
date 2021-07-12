@@ -13,7 +13,7 @@ public class Hand : Zone
     [SerializeField]
     private float maxWidth = 15f;
     [SerializeField]
-    private float maxZ = 50f;
+    private float maxZ = 20f;
     [SerializeField]
     private int maxHandSize = 7;
 
@@ -67,7 +67,7 @@ public class Hand : Zone
     {
         cardToAdd.setDraggable(!isLocked);
         cardToAdd.front();
-        cardToAdd.show();
+        cardToAdd.setVisible(true);
         base.addCard(cardToAdd);
         display();
     }
@@ -93,7 +93,7 @@ public class Hand : Zone
         flipper.flip();
         flipper.flipComplete.AddListener(DiscardComplete);
         if (cards.Count >= 2)
-            cards[1].show();
+            cards[1].setVisible(true);
     }
 
     private void DiscardComplete(){

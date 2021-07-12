@@ -25,7 +25,7 @@ public class Discard : Zone
             {
                 case 0:
                     card.moveTo(transform.position + new Vector3(0,0,-1));
-                    card.show();
+                    card.setVisible(true);
                     break;
                 default:
                     card.moveTo(transform.position);
@@ -38,14 +38,14 @@ public class Discard : Zone
     {
         cardToAdd.setDraggable(false);
         cardToAdd.front();
-        cardToAdd.hide();
+        cardToAdd.setVisible(false);
         base.addCard(cardToAdd);
         display();
         cards[cards.Count-1].GetComponent<GoTo>().moveComplete.AddListener(hideOthers);
     }
     private void hideOthers(){
         for (int i = 0; i < cards.Count - 1; i++){
-            cards[i].hide();
+            cards[i].setVisible(false);
         }
     }
 
@@ -60,8 +60,11 @@ public class Discard : Zone
     }
 
 
-    public void dumpToNewZone(Zone zone){
-        while(cards.Count > 0)
-            moveCardToNewZone(cards[0], zone);    
+    public void dumpToDeck(Deck deck){
+        while(cards.Count > 0){
+                deck.addCard(cards[0]);
+                removeCard(0);
+        }
     }
+    
 }

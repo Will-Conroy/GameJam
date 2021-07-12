@@ -41,7 +41,7 @@ public class Deck : Zone
             {
                 case 0:
                     card.moveTo(transform.position + new Vector3(0,0,-1));
-                    card.show();
+                    card.setVisible(true);
                     break;
                 default:
                     card.moveTo(transform.position);
@@ -55,14 +55,15 @@ public class Deck : Zone
     {
         cardToAdd.setDraggable(false);
         cardToAdd.back();
-        cardToAdd.hide();
+        cardToAdd.setVisible(false);
         base.addCard(cardToAdd);
         display();
     }
 
 
     public void refillDeck(){
-        GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>().dumpToNewZone(this);
+        GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>().dumpToDeck(this);
+        display();
         shuffle();
     }
 
@@ -94,7 +95,7 @@ public class Deck : Zone
             flipper.flip();
             flipper.flipComplete.AddListener(DrawComplete);
             if (cards.Count >= 2)
-                cards[1].show();
+                cards[1].setVisible(true);
         }
     }
     private void DrawComplete(){
