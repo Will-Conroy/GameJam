@@ -83,9 +83,7 @@ public class Hand : Zone
             endDiscard?.Invoke();
             return;
         }
-
         DiscardNext();
-
     }
 
     private void DiscardNext()
@@ -117,14 +115,8 @@ public class Hand : Zone
     }
 
 
-
-
     /*---- Getters & Setters ----*/
     public int getMaxHandSize(){
         return maxHandSize;
     }
-
-    
-
-
 }
