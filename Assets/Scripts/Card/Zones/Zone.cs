@@ -12,6 +12,7 @@ public class Zone : MonoBehaviour
     /*---- Methods ----*/
     public void addCard(Card cardToAdd)
     {
+        ///Debug.Log("damn...");
         if (this.canAddCard())
         {
             cards.Add(cardToAdd);
@@ -54,7 +55,7 @@ public class Zone : MonoBehaviour
     {
         int displayCount = Mathf.Max(0, cards.Count-1);
         cards[displayCount].moveTo(transform.position + new Vector3(0,0,-1));
-        cards[displayCount].show();
+        cards[displayCount].setVisible(true);
 
     }
 

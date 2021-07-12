@@ -49,6 +49,7 @@ public class CardFlip : MonoBehaviour
         }
         if (proportion >= 1){
             doFlip = false;
+            halfPassed = false;
             flipComplete.Invoke();
         }
     }
