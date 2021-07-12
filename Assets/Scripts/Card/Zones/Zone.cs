@@ -50,7 +50,6 @@ public class Zone : MonoBehaviour
         return (cards.Count < maxLength || maxLength == 0);
     }
 
- 
     public virtual void display()
     {
         int displayCount = Mathf.Max(0, cards.Count-1);
@@ -66,17 +65,12 @@ public class Zone : MonoBehaviour
     public bool isEmpty(){
         return cards.Count < 1;
     }
-
     /*---- Getters & Setters ----*/
     public Card getCard(int index){
         return cards[index];
     }
-
-
     public List<Card> getCards()
     {
         return cards;
-    }
-
-    
+    }   
 }

@@ -9,12 +9,9 @@ public class Deck : Zone
     public UnityEvent endDraw = new UnityEvent();
 
 
-    /*---- Veriables ----*/
-    
+    /*---- Veriables ----*/    
     Hand hand;
     int drawing = 0;
-
-
 
     /*---- Initialization ----*/
         void Awake()
@@ -69,12 +66,7 @@ public class Deck : Zone
 
     public void Draw (int numToDraw){
         //drawing = Mathf.Min(numToDraw, cards.Count); //add discard pile too
-        drawing = numToDraw;
-        if (drawing < 1){
-            endDraw?.Invoke();
-            return;
-        }
-        
+        drawing = numToDraw; 
         hand.lockCards();
         DrawNext();
 
@@ -88,6 +80,7 @@ public class Deck : Zone
         if(isEmpty()){
             drawing = 0;
             DrawComplete();
+
         }else{
             drawing -= 1;
             CardFlip flipper = cards[0].GetComponent<CardFlip>();
