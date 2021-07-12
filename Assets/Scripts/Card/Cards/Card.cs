@@ -117,6 +117,7 @@ public class Card : MonoBehaviour {
             GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>().moveCardToNewZone(this, GameObject.FindGameObjectWithTag("Play").GetComponent<Zone>());
         }else{
             cardCommand.Excuted.RemoveListener(finishPlayingCard);
+            GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>().unlockCards();
         }
         return played;
     }
