@@ -12,7 +12,6 @@ public class Zone : MonoBehaviour
     /*---- Methods ----*/
     public void addCard(Card cardToAdd)
     {
-        ///Debug.Log("damn...");
         if (this.canAddCard())
         {
             cards.Add(cardToAdd);
