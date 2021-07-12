@@ -129,5 +129,6 @@ public class Deck : Zone
             cards[k] = cards[n];  
             cards[n] = tmp;  
         }
+        display();
     }
 }

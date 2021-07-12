@@ -86,17 +86,7 @@ public class Hand : Zone
         DiscardNext();
     }
 
-    private void DiscardNext()
-    {
-        //drawing -= 1;
-        CardFlip flipper = cards[0].GetComponent<CardFlip>();
-        flipper.flip();
-        flipper.flipComplete.AddListener(DiscardComplete);
-        if (cards.Count >= 2)
-            cards[1].setVisible(true);
-    }
-
-    private void DiscardComplete(){
+    private void DiscardNext(){
         if (cards.Count < 1){
             endDiscard.Invoke();
             return;
@@ -104,13 +94,12 @@ public class Hand : Zone
         Card discardedCard = discardList.Dequeue();
         removeCard(discardedCard);
         discard.addCard(discardedCard);
-        discardedCard.GetComponent<CardFlip>().flipComplete.RemoveListener(DiscardComplete);
+        discard.display();
         //if no more cards are present, shuffle in the discard pile and continue
         if (discardList.Count > 0){
             DiscardNext();
         } else{
-            display();
-            endDiscard.Invoke();
+            discardedCard.GetComponent<GoTo>().moveComplete.AddListener(delegate{endDiscard.Invoke();});
         }
     }
 

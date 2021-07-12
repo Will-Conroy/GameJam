@@ -44,7 +44,7 @@ public class Discard : Zone
         cards[cards.Count-1].GetComponent<GoTo>().moveComplete.AddListener(hideOthers);
     }
     private void hideOthers(){
-        for (int i = 0; i < cards.Count - 1; i++){
+        for (int i = 0; i < cards.Count - 2; i++){
             cards[i].setVisible(false);
         }
     }
@@ -66,5 +66,5 @@ public class Discard : Zone
                 removeCard(0);
         }
     }
-    
+
 }
