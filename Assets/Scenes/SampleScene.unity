@@ -134,10 +134,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayZone
       objectReference: {fileID: 0}
-    - target: {fileID: 7523352718842055719, guid: e937c3c8df16b874e9d0d19bb05915dd, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7523352718842055737, guid: e937c3c8df16b874e9d0d19bb05915dd, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -152,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7523352718842055737, guid: e937c3c8df16b874e9d0d19bb05915dd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.4940038
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7523352718842055737, guid: e937c3c8df16b874e9d0d19bb05915dd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -585,7 +581,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1855860332
 PrefabInstance:
@@ -742,7 +738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2259541322640431289, guid: b535c1948e2fa9047b97c33d0dd98d81, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2259541322640431289, guid: b535c1948e2fa9047b97c33d0dd98d81, type: 3}
       propertyPath: m_AnchorMax.x
