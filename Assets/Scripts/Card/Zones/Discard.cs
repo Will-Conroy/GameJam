@@ -7,12 +7,12 @@ public class Discard : Zone
     /*---- Initialization ----*/
     void Awake()
     {
-
+        /*
         for (int i = 0; i < 15; i++)
         {
             GameObject c = Instantiate(Resources.Load("CardPrefab"), transform.position, Quaternion.identity) as GameObject;
             addCard(c.GetComponent<Card>());
-        }
+        }*/
     }
 
     

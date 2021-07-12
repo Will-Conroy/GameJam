@@ -36,6 +36,14 @@ public class Zone : MonoBehaviour
         cards.Remove(cardToRemove);
     }
 
+
+    public void moveCardToNewZone(Card cardToMove, Zone zoneToMoveTo){
+        if(cards.Contains(cardToMove)){
+            zoneToMoveTo.addCard(cardToMove);
+            removeCard(cardToMove);
+        }
+    }
+
     public bool canAddCard()
     {
         return (cards.Count < maxLength || maxLength == 0);
@@ -44,6 +52,8 @@ public class Zone : MonoBehaviour
  
     public virtual void display()
     {
+        cards[0].moveTo(transform.position + new Vector3(0,0,-1));
+        cards[0].show();
 
     }
 

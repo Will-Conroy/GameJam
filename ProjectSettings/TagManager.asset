@@ -8,6 +8,7 @@ TagManager:
   - Deck
   - Discard
   - Puppet
+  - Play
   layers:
   - Default
   - TransparentFX

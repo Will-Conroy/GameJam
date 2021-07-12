@@ -45,15 +45,11 @@ public class CardDrag : MonoBehaviour {
         if (followMouse)
         {
             followMouse = false;
-
             if(currentCollisions.Count != 0){
                 GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>().lockCards();
                 GetComponentInParent<Card>().cardPlay(currentCollisions);
             }
-
             GetComponentInParent<Zone>().display();
-            GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>().unlockCards();
-
         }
     }
 

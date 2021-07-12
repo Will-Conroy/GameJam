@@ -77,7 +77,6 @@ public class Card : MonoBehaviour {
     public bool cardPlay( List<GameObject> collisions)
     {
         Command cardCommand = null;
-    
         if(getEffect()?.getType() == CardEffect.EffectType.EquipPuppet)
         {
             foreach (GameObject gObject in collisions)
@@ -89,8 +88,7 @@ public class Card : MonoBehaviour {
                     if(cardCommand == null)
                     {
                         cardCommand = getEffect().constructCommand(new List<GameObject> {gObject});
-                    }else
-                    {
+                    }else{
                         return false;
                     }
                 }
@@ -110,13 +108,29 @@ public class Card : MonoBehaviour {
         //if cardCommand is null it means the layer condition for the give effectType has NOT been met.
         if(cardCommand == null)
             return false;
+
         //Add's listener to move the played card into the discard pile, when the all animation have finished
-        cardCommand?.Excuted.AddListener(delegate{movePlayedCard();});
-        return GameObject.Find("HUB").GetComponent<GameController>().playCard(cardCommand, template?.getCost());      
+        cardCommand?.Excuted.AddListener(finishPlayingCard);
+
+        bool played = GameObject.Find("HUB").GetComponent<GameController>().playCard(cardCommand, template?.getCost());
+        if(played){
+            GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>().moveCardToNewZone(this, GameObject.FindGameObjectWithTag("Play").GetComponent<Zone>());
+        }else{
+            cardCommand.Excuted.RemoveListener(finishPlayingCard);
+        }
+        return played;
     }
 
-    private void movePlayedCard(){
 
+    private void finishPlayingCard(Command command){
+        command.Excuted.RemoveListener(finishPlayingCard);
+        Debug.Log("finished playing");
+        GameObject.FindGameObjectWithTag("Play").GetComponent<Zone>().moveCardToNewZone(this, GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>());
+        GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>().unlockCards();
+        GetComponentInParent<Zone>().display();
+    }
+    private void movePlayedCard(Command command){
+        
     }
 
     /*----- Getters & Setters ----*/
