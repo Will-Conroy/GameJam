@@ -257,7 +257,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4595758651619947291}
         m_TargetAssemblyTypeName: TestButtons, Assembly-CSharp
-        m_MethodName: testDraw
+        m_MethodName: testWeekness
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
