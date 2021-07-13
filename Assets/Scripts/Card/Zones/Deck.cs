@@ -7,16 +7,19 @@ public class Deck : Zone
 {
     /*---- Events ----*/
     public UnityEvent endDraw = new UnityEvent();
+    public UnityEvent endFilledDeck = new UnityEvent();
 
 
     /*---- Veriables ----*/    
     Hand hand;
+    GameController _gameController;
     int drawing = 0;
 
     /*---- Initialization ----*/
         void Awake()
     {
         hand = GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>();
+        _gameController = GameObject.Find("HUB").GetComponent<GameController>();
         for (int i = 0; i < 15; i++)
         {
             CardTemplate cardTemplateDraw = new CardTemplate(null, new EffectDraw(2), "Draws 2 cards", "Draw");
@@ -60,8 +63,11 @@ public class Deck : Zone
 
     public void refillDeck(){
         GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>().dumpToDeck(this);
+        //Debug.Log("Trying to refill");
+        //_gameController.performAction(new DumpToDeckCommand(new List<GameObject> {GameObject.FindGameObjectWithTag("Discard"), GameObject.FindGameObjectWithTag("Deck")}));
         display();
         shuffle();
+        endFilledDeck?.Invoke();
     }
 
 

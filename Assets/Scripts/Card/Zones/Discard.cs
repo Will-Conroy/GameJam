@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Discard : Zone
 {
+    /*---- Events ----*/
+    public UnityEvent endDumpToDeck = new UnityEvent();
+    
+    
     /*---- Initialization ----*/
     void Awake()
     {
@@ -61,10 +66,12 @@ public class Discard : Zone
 
 
     public void dumpToDeck(Deck deck){
+        Debug.Log("Trying to dump");
         while(cards.Count > 0){
                 deck.addCard(cards[0]);
                 removeCard(0);
         }
+        endDumpToDeck?.Invoke();
     }
 
 }

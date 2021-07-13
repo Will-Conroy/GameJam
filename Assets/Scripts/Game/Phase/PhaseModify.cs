@@ -12,7 +12,7 @@ public class PhaseModify : Phase
 
     /*---- Methods ----*/
    public override void Enter(){
-       validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase, GameController.ActionType.PlayerEndPhase, GameController.ActionType.Draw, GameController.ActionType.Discard};
+       validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase, GameController.ActionType.PlayerEndPhase, GameController.ActionType.Draw, GameController.ActionType.Discard, GameController.ActionType.DumpToDeck};
        nextPhase = new PhasePlan(_isPlayerOne);
         return;
     }

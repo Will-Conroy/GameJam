@@ -14,7 +14,7 @@ public class PhaseUpkeep : Phase
     /*---- Methods ----*/
    public override void Enter(){
        nextPhase = new PhaseModify(_isPlayerOne);
-       validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase, GameController.ActionType.Draw};
+       validAction = new GameController.ActionType[] {GameController.ActionType.EndPhase, GameController.ActionType.Draw, GameController.ActionType.DumpToDeck};
         GameObject DeckObject = GameObject.FindGameObjectWithTag("Deck");
        _commandProcessor.AddCommand(new DrawToHandSizeCommand(new List<GameObject> {DeckObject}));
        _commandProcessor.AddCommand(new EndPhaseCommand(new List<GameObject> {_gameController.getGameObject()}, _isPlayerOne));

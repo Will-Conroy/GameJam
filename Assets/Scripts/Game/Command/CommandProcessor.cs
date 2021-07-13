@@ -18,7 +18,7 @@ public class CommandProcessor
     public CommandProcessor(){
         excuting = false;
     }
-
+    
 
     /*---- Methods ----*/
    public void ExecuteCommand(Command command){

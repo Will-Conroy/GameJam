@@ -25,7 +25,7 @@ public class LogController : MonoBehaviour
 
 
     /*---- Methods ----*/
-        private void updateCurrentPhase((string, bool) textArray){
+    private void updateCurrentPhase((string, bool) textArray){
         currentPhase?.getCommandProcessor().commandExcutionStart.RemoveListener(updateText);
         currentPhase = _gameController.getCurrentPhase();
         currentPhase.getCommandProcessor().commandExcutionStart.AddListener(updateText);

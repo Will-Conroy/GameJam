@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
         AddMana,
         Draw,
         Discard,
+        DumpToDeck,
         EquipCard,
         QueuePuppetAction,
         PerfromPuppetAction
@@ -77,7 +78,6 @@ public class GameController : MonoBehaviour
     //NEED IMPLMENTION
     private bool isEnoughMana(Dictionary<Card.ColourTypes, int> manaCost){
         return true;
-
     }
 
 

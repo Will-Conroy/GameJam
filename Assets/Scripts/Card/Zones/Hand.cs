@@ -88,7 +88,7 @@ public class Hand : Zone
 
     private void DiscardNext(){
         if (cards.Count < 1){
-            endDiscard.Invoke();
+            endDiscard?.Invoke();
             return;
         }
         Card discardedCard = discardList.Dequeue();
