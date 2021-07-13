@@ -63,8 +63,6 @@ public class Deck : Zone
 
     public void refillDeck(){
         GameObject.FindGameObjectWithTag("Discard").GetComponent<Discard>().dumpToDeck(this);
-        //Debug.Log("Trying to refill");
-        //_gameController.performAction(new DumpToDeckCommand(new List<GameObject> {GameObject.FindGameObjectWithTag("Discard"), GameObject.FindGameObjectWithTag("Deck")}));
         display();
         shuffle();
         endFilledDeck?.Invoke();
@@ -82,7 +80,7 @@ public class Deck : Zone
     private void DrawNext()
     {
         if(isEmpty())
-            refillDeck();
+            _gameController.performInterruptAction(new RefillDeckCommand(new List<GameObject> {GameObject.FindGameObjectWithTag("Deck")}));
 
         if(isEmpty()){
             drawing = 0;

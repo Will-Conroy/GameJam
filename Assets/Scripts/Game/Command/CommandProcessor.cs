@@ -29,6 +29,7 @@ public class CommandProcessor
             command?.Execute();
        }
    }
+   
 
    private void setExcuting(bool isExcuitng){
        excuting = isExcuitng;

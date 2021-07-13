@@ -90,6 +90,10 @@ public class GameController : MonoBehaviour
         return currentPhase.Execute(command);
     }
 
+    public bool performInterruptAction(Command command){
+        return currentPhase.ExecuteInterrupt(command);
+    }
+
     public void endTurn(){
             turnEnded?.Invoke();
     }

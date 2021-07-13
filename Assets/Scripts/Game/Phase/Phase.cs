@@ -24,10 +24,19 @@ public  abstract class Phase
 
     /*---- Methods ----*/
     public virtual bool Execute(Command command){
+       return Execute(command, _commandProcessor);     
+   }
+
+
+   protected virtual bool Execute(Command command, CommandProcessor commandProcessor){
        bool vaild = IsValidAction(command);
        if(vaild)
-           _commandProcessor.ExecuteCommand(command);
-        return vaild;      
+           commandProcessor.ExecuteCommand(command);
+        return vaild; 
+   }
+
+   public virtual bool ExecuteInterrupt(Command command){
+       return Execute(command, new SubCommandProcessor());
    }
 
    public Phase NextPhase(){
