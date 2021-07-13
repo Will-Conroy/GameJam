@@ -36,7 +36,7 @@ public  abstract class Phase
    }
 
    public virtual bool ExecuteInterrupt(Command command){
-       return Execute(command, new SubCommandProcessor());
+       return Execute(command, new SubCommandProcessor(_commandProcessor));
    }
 
    public Phase NextPhase(){

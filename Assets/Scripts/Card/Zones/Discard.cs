@@ -66,7 +66,6 @@ public class Discard : Zone
 
 
     public void dumpToDeck(Deck deck){
-        Debug.Log("Trying to dump");
         while(cards.Count > 0){
                 deck.addCard(cards[0]);
                 removeCard(0);

@@ -24,12 +24,17 @@ public class CommandProcessor
    public void ExecuteCommand(Command command){
        if(!excuting){
            setExcuting(true);
-            commandExcutionStart?.Invoke(command.getInfo());
+            invokeCommandExuctionStart(command.getInfo());
             command?.Excuted.AddListener(finishCommandSingle);
             command?.Execute();
        }
    }
-   
+
+
+   protected virtual void invokeCommandExuctionStart(string commandInfo){
+       commandExcutionStart?.Invoke(commandInfo);
+   }
+
 
    private void setExcuting(bool isExcuitng){
        excuting = isExcuitng;
