@@ -1,0 +1,2 @@
+0,DNA,cost,Draws 1 Card,DrawEffect,1
+1,Sperm,cost,Draws 2 Cards,DrawEffect,2

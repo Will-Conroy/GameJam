@@ -38,11 +38,15 @@ public class GameController : MonoBehaviour
 
     
 
+    
+
 
     /*---- Initialization ----*/
     private void Awake(){
         currentPhase = new PhaseUpkeep(true);
         phaseChange?.Invoke((currentPhase.getPhaseName(),  currentPhase.isPlayerOne()));
+        
+
     }
     
     private void Start()

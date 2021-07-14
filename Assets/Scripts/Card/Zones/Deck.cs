@@ -13,6 +13,7 @@ public class Deck : Zone
     /*---- Veriables ----*/    
     Hand hand;
     GameController _gameController;
+    private DeckLoader _deckLoader;
     int drawing = 0;
 
     /*---- Initialization ----*/
@@ -20,16 +21,18 @@ public class Deck : Zone
     {
         hand = GameObject.FindGameObjectWithTag("Hand").GetComponent<Hand>();
         _gameController = GameObject.Find("HUB").GetComponent<GameController>();
-        for (int i = 0; i < 15; i++)
+        
+        /*for (int i = 0; i < 15; i++)
         {
             CardTemplate cardTemplateDraw = new CardTemplate(null, new EffectDraw(2), "Draws 2 cards", "Draw");
             GameObject c = Instantiate(Resources.Load("CardPrefab"), transform.position, Quaternion.identity) as GameObject;
             c.GetComponent<Card>().loadFromTemplate(cardTemplateDraw,0);
             addCard(c.GetComponent<Card>());
-        }
+        }*/
         //cards[0].GetComponent<GoTo>().moveComplete.AddListener(delegate{Draw(5);}); //Once the move is complete, draw 4
 
     }
+
 
 
     /*---- Methods ----*/
